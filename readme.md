@@ -37,7 +37,7 @@ We published some code examples in our github repository, namely:
 - Javascript: [https://github.com/agiliumtrade-ai/metaapi-metastats-sdk/tree/master/examples](https://github.com/agiliumtrade-ai/metaapi-metastats-sdk/tree/master/examples)
 
 ## Quotas and rate limits
-API calls you make are subject to rate limits. See [https://metaapi.cloud/docs/metastats/restApi/rateLimiting/](https://metaapi.cloud/docs/metastats/restApi/rateLimiting/) for more details.
+API calls you make are subject to rate limits. See [https://metaapi.cloud/docs/metastats/rateLimiting/](https://metaapi.cloud/docs/metastats/rateLimiting/) for more details.
 
 ## Installation
 ```bash
@@ -87,3 +87,4 @@ Some of the APIs you might decide to use together with this module:
 
 1. MetaApi cloud forex trading API [https://metaapi.cloud/docs/client/](https://metaapi.cloud/docs/client/)
 2. CopyFactory copy trading  API [https://metaapi.cloud/docs/copyfactory/](https://metaapi.cloud/docs/copyfactory/)
+3. MetaTrader account management API [https://metaapi.cloud/docs/provisioning/](https://metaapi.cloud/docs/provisioning/)
