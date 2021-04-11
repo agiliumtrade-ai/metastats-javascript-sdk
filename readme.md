@@ -36,9 +36,6 @@ We published some code examples in our github repository, namely:
 
 - Javascript: [https://github.com/agiliumtrade-ai/metaapi-metastats-sdk/tree/master/examples](https://github.com/agiliumtrade-ai/metaapi-metastats-sdk/tree/master/examples)
 
-## Quotas and rate limits
-API calls you make are subject to rate limits. See [https://metaapi.cloud/docs/metastats/rateLimiting/](https://metaapi.cloud/docs/metastats/rateLimiting/) for more details.
-
 ## Installation
 ```bash
 npm install --save metaapi-metastats-sdk
@@ -79,6 +76,9 @@ console.log(await metaStats.getMetrics(accountId));
 // retrieve MetaApi MetaTrader account statistics including open positions
 console.log(await metaStats.getMetrics(accountId, true);
 ```
+
+## Quotas and rate limits
+API calls you make are subject to rate limits. See [https://metaapi.cloud/docs/metastats/rateLimiting/](https://metaapi.cloud/docs/metastats/rateLimiting/) for more details.
 
 ## Related projects:
 See our website for the full list of APIs and features supported [https://metaapi.cloud/#features](https://metaapi.cloud/#features)
