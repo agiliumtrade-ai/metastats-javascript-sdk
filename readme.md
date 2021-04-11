@@ -19,7 +19,7 @@ The primary intended use of MetaStats API is creating trade monitoring applicati
 ## Pricing
 MetaStats is available to all MetaApi users without extra charges at this point.
 
-You pay only an affordable fee for MetaApi MetaTrader terminal hosting. See [https://metaapi.cloud/#pricing](https://metaapi.cloud/#pricing) for more details.
+You pay a fee executing MetaTrader terminal on MetaApi cloud. See [https://metaapi.cloud/#pricing](https://metaapi.cloud/#pricing) for more details.
 
 MetaApi provides a free tier so that you can test our APIs without any charges.
 
@@ -35,6 +35,9 @@ MetaStats REST API docs are available at [https://metaapi.cloud/docs/metastats/]
 We published some code examples in our github repository, namely:
 
 - Javascript: [https://github.com/agiliumtrade-ai/metaapi-metastats-sdk/tree/master/examples](https://github.com/agiliumtrade-ai/metaapi-metastats-sdk/tree/master/examples)
+
+## Quotas and rate limits
+API calls you make are subject to rate limits. See [https://metaapi.cloud/docs/metastats/restApi/rateLimiting/](https://metaapi.cloud/docs/metastats/restApi/rateLimiting/) for more details.
 
 ## Installation
 ```bash
