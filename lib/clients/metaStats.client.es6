@@ -260,6 +260,8 @@ export default class MetaStatsClient {
    * @property {Number} [lostTradesPercent] percentage of losing trades
    * @property {Number} [zScore] ability of a trading system to generate wins and losses in streaks
    * @property {Number} [probability] probability that a profit will be followed by a profit and a loss by a loss
+   * @property {Number} [daysSinceTradingStarted] the number of days that have passed
+   * since the opening of the first trade
    * @property {Array<CurrencySummaryMetrics>} [currencySummary] currency trading summary
    * @property {Array<DailyGrowthMetrics>} [dailyGrowth] daily gain shows the change
    * in account profitability on trading days
