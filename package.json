@@ -5,7 +5,7 @@
   },
   "contributors": [
     {
-      "name": "Vladimir Cherevko",
+      "name": "Vladimir C.",
       "email": "vladimir.c.as@agiliumlabs.com"
     }
   ],
@@ -34,7 +34,7 @@
     "metastats",
     "browser"
   ],
-  "name": "metaapi-metastats-sdk",
+  "name": "metaapi.cloud-metastats-sdk",
   "description": "Javascript SDK for MetaStats forex trading statistics API. Can calculate metrics for MetaTrader accounts added to MetaApi. Supports both MetaTrader 5 (MT5) and MetaTrader 4 (MT4). (https://metaapi.cloud)",
   "license": "SEE LICENSE IN LICENSE",
   "repository": {

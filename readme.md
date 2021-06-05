@@ -38,17 +38,17 @@ We published some code examples in our github repository, namely:
 
 ## Installation
 ```bash
-npm install --save metaapi-metastats-sdk
+npm install --save metaapi.cloud-sdk
 ```
 
 ## Installing SDK in browser SPA applications
 ```bash
-npm install --save metaapi-metastats-sdk
+npm install --save metaapi.cloud-sdk
 ```
 
 ## Installing SDK in browser HTML applications
 ```html
-<script src="unpkg.com/metaapi-metastats-sdk/index.js"></script>
+<script src="unpkg.com/metaapi.cloud-sdk/index.js"></script>
 <script>
     const token = '...';
     const metaStats = new MetaStats(token);
@@ -59,7 +59,7 @@ Please visit [https://app.metaapi.cloud/token](https://app.metaapi.cloud/token) 
 
 ## Configuring trading statistics
 ```javascript
-import MetaStats from 'metaapi-metastats-sdk';
+import {MetaStats} from 'metaapi.cloud-sdk';
 
 const token = '...';
 const metaStats = new MetaStats(token);
