@@ -1,4 +1,4 @@
-let MetaStats = require('metaapi-metastats-sdk').default;
+let {MetaStats} = require('metaapi.cloud-sdk').default;
 
 // your MetaApi API token
 let token = process.env.TOKEN || '<put in your token here>';
