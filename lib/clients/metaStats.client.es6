@@ -91,8 +91,8 @@ export default class MetaStatsClient {
    * @property {Number} [pips] cumulative pips per day
    * @property {Number} [lots] cumulative lots per day
    * @property {Number} [gains] cumulative gains per day
-   * @property {Number} totalProfit total profit in this day end
-   * @property {Number} totalGains total gains in this day end
+   * @property {Number} [totalProfit] total profit in this day end
+   * @property {Number} [totalGains] total gains in this day end
    * @property {Number} balance balance in this day end
    * @property {Number} [drawdownPercentage] percentage of balance drawdown in this day end
    * @property {Number} [drawdownProfit] maximum registered balance drawdown in basic currency during this day

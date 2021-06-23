@@ -34,7 +34,7 @@ MetaStats REST API docs are available at [https://metaapi.cloud/docs/metastats/]
 ## Code examples
 We published some code examples in our github repository, namely:
 
-- Javascript: [https://github.com/agiliumtrade-ai/metaapi-metastats-sdk/tree/master/examples](https://github.com/agiliumtrade-ai/metaapi-metastats-sdk/tree/master/examples)
+- Javascript: [https://github.com/agiliumtrade-ai/metastats-javascript-sdk/tree/master/examples](https://github.com/agiliumtrade-ai/metastats-javascript-sdk/tree/master/examples)
 
 ## Installation
 ```bash
