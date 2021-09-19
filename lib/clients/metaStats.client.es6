@@ -20,7 +20,7 @@ export default class MetaStatsClient {
   /**
    * @typedef {Object} CurrencySummaryHistoryDayMetrics profit from trading a currency pair in one trading day
    * @property {String} date date of trading day, in broker timezone, YYYY-MM-DD format
-   * @property {Number} totalProfit total profit of trading day
+   * @property {Number} totalProfit total profit at the end of the day
    * @property {Number} [totalPips] total pips of trading day
    * @property {Number} [shortProfit] total profit of short trades per day
    * @property {Number} [longProfit] total profit of long trades per day
@@ -91,8 +91,8 @@ export default class MetaStatsClient {
    * @property {Number} [pips] cumulative pips per day
    * @property {Number} [lots] cumulative lots per day
    * @property {Number} [gains] cumulative gains per day
-   * @property {Number} [totalProfit] total profit in this day end
-   * @property {Number} [totalGains] total gains in this day end
+   * @property {Number} totalProfit total profit in this day end
+   * @property {Number} totalGains total gains in this day end
    * @property {Number} balance balance in this day end
    * @property {Number} [drawdownPercentage] percentage of balance drawdown in this day end
    * @property {Number} [drawdownProfit] maximum registered balance drawdown in basic currency during this day
@@ -245,20 +245,26 @@ export default class MetaStatsClient {
    * @property {Number} deposits cumulative deposit for the entire period
    * @property {Number} [absoluteGain] simple deposit increase without regard to reinvestment
    * @property {Number} [profitFactor] the amount yielded by winning trades divided by the amount
-   * of losses yielded by losing trades
-   * @property {Number} [sharpeRatio] average return earned in excess of the risk-free rate per unit of volatility
-   * @property {Number} [sortinoRatio] differentiates harmful volatility from total overall volatility
+   * of losses yielded by losing trades. Result in range 0 - Infinity means: `0` - only loss, `1` - profit equals to
+   * loss, `Infinity` - only profit.
+   * @property {Number} [sharpeRatio] average return earned in excess of the risk-free rate per unit of volatility.
+   * It is calculated if there are at least 30 closed deals in the history
+   * @property {Number} [sortinoRatio] differentiates harmful volatility from total overall volatility.
+   * It is calculated if there are at least 30 closed deals in the history
    * @property {Number} [standardDeviationProfit] statistical measure of volatility shows how much
-   * variation or dispersion
-   * @property {Number} [kurtosisProfit] a statistical measure that is used to describe profit distribution
-   * @property {Number} [averageHoldingPeriodReturn] average holding period return
+   * variation or dispersion. It is calculated if there are at least 30 closed deals in the history
+   * @property {Number} [kurtosisProfit] a statistical measure that is used to describe profit distribution.
+   * It is calculated if there are at least 30 closed deals in the history
+   * @property {Number} [averageHoldingPeriodReturn] average holding period return.
+   * It is calculated if there are at least 30 closed deals in the history
    * @property {Number} [averageWin] average win in basic currency
    * @property {Number} [averageWinPips] average win in pips
    * @property {Number} [averageLoss] average loss in basic currency
    * @property {Number} [averageLossPips] average loss in pips
    * @property {Number} [wonTradesPercent] percentage of winning trades
    * @property {Number} [lostTradesPercent] percentage of losing trades
-   * @property {Number} [zScore] ability of a trading system to generate wins and losses in streaks
+   * @property {Number} [zScore] ability of a trading system to generate wins and losses in streaks.
+   * It is calculated if there are at least 30 closed deals in the history
    * @property {Number} [probability] probability that a profit will be followed by a profit and a loss by a loss
    * @property {Number} [daysSinceTradingStarted] the number of days that have passed
    * since the opening of the first trade
