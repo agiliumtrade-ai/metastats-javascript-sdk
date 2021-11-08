@@ -1,4 +1,4 @@
-1.0.4
+1.1.0
   - added getAccountTrades method
   - added getAccountOpenTrades method
   - added freeMargin metric
