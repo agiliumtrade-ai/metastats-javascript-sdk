@@ -1,3 +1,12 @@
+1.0.4
+  - added getAccountTrades method
+  - added getAccountOpenTrades method
+  - added freeMargin metric
+  - added margin metric
+  - added marginLevel metric
+  - added cagr metric
+  - added mar metric
+
 1.0.3
   - documentation clarifications for some metrics
 

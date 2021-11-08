@@ -33,4 +33,19 @@ export default class MetaStats {
     return this._metaStatsClient.getMetrics.bind(this._metaStatsClient);
   }
 
+  /**
+   * Returns the getAccountTrades MetaStatsClient method bound to the MetaStatsClient instance
+   * @returns {Function} getAccountTrades MetaStatsClient method
+   */
+  get getAccountTrades() {
+    return this._metaStatsClient.getAccountTrades.bind(this._metaStatsClient);
+  }
+
+  /**
+   * Returns the getAccountOpenTrades MetaStatsClient method bound to the MetaStatsClient instance
+   * @returns {Function} getAccountOpenTrades MetaStatsClient method
+   */
+  get getAccountOpenTrades() {
+    return this._metaStatsClient.getAccountOpenTrades.bind(this._metaStatsClient);
+  }
 }

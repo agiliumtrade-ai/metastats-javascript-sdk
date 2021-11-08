@@ -11,7 +11,7 @@ const metaStats = new MetaStats(token);
 // you can configure http client via second parameter,
 // see esdoc in-code documentation for full definition of possible configuration options
 
-async function getAccountMetrics() {
+async function exampleRequest() {
   try {
     let account = await api.metatraderAccountApi.getAccount(accountId);
 
@@ -29,11 +29,16 @@ async function getAccountMetrics() {
 
     let metrics = await metaStats.getMetrics(accountId);
     console.log(metrics);//-> {trades: ..., balance: ..., ...}
+    
+    let trades = await metaStats.getAccountTrades(accountId, '0000-01-01 00:00:00.000', '9999-01-01 00:00:00.000');
+    console.log(trades);//-> {_id: ..., gain: ..., ...}
+    
+    let openTrades = await metaStats.getAccountOpenTrades(accountId);
+    console.log(openTrades);//-> {_id: ..., gain: ..., ...}
 
   } catch (err) {
     console.error(err);
   }
-  process.exit();
 }
 
-getAccountMetrics();
+exampleRequest();
