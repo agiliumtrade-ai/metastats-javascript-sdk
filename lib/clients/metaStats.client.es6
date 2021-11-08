@@ -207,6 +207,9 @@ export default class MetaStatsClient {
    * in broker timezone, YYYY-MM-DD HH:mm:ss.SSS format
    * @property {Number} [highestBalance] maximum balance that have ever been on the account
    * @property {Number} equity the result (current amount) of all positions, including opened
+   * @property {Number} margin current value of margin
+   * @property {Number} freeMargin current value of free margin
+   * @property {Number} [marginLevel] current value of margin level 
    * @property {Number} trades total number of closed positions on the account
    * @property {Number} [withdrawals] total amount withdrawn from the deposit
    * @property {Number} [averageTradeLengthInMilliseconds] average trade length
@@ -223,6 +226,7 @@ export default class MetaStatsClient {
    * in broker timezone, YYYY-MM-DD HH:mm:ss.SSS format
    * @property {String} [worstTradePipsDate] date of the worst pips from one trade that have ever been on the account,
    * in broker timezone, YYYY-MM-DD HH:mm:ss.SSS format
+   * @property {Number} [cagr] compound annual growth rate
    * @property {Number} [commissions] commissions charged by the broker for the entire period
    * @property {Number} [dailyGain] compound daily rate of return
    * @property {Number} [monthlyGain] compound monthly rate of return
@@ -239,6 +243,7 @@ export default class MetaStatsClient {
    * @property {Number} [longWonTradesPercent] percentage of long winning trades
    * @property {Number} [shortWonTradesPercent] percentage of short winning trades
    * @property {Number} [maxDrawdown] percentage of maximum drawdown of balance during the entire trading history
+   * @property {Number} [mar] mar ratio
    * @property {Number} [lots] total volume of trades
    * @property {Number} [pips] cumulative price units
    * @property {Number} profit the total yield of closed positions for the entire period (total result)
@@ -303,4 +308,78 @@ export default class MetaStatsClient {
     return metrics;
   }
 
+  /**
+   * @typedef Trade historical trades
+   * @property {String} _id historical trade id
+     @property {String} accountId MetaApi account id
+     @property {Number} volume trade volume
+     @property {Number} durationInMinutes trade duration in minutes
+     @property {Number} profit trade profit
+     @property {Number} gain trade gain
+     @property {String} success trade success
+     @property {String} openTime time the trade was opened at in broker timezone, YYYY-MM-DD HH:mm:ss.SSS format
+     @property {String} type trade type
+     @property {String} [symbol] symbol the trade relates to
+     @property {String} [closeTime] time the trade was closed at in broker timezone, YYYY-MM-DD HH:mm:ss.SSS format
+     @property {Number} [openPrice] trade opening price
+     @property {Number} [closePrice] trade closing price
+     @property {Number} [pips] the number of pips earned (positive) or lost (negative) in this trade
+   */
+
+  /**
+   * Returns historical trades of MetaApi account
+   * @param {String} accountId MetaApi account id
+   * @param {String} startTime start of time range, inclusive
+   * @param {String} endTime end of time range, exclusive
+   * @param {Number} [limit] pagination limit
+   * @param {Number} [offset] pagination offset
+   * @return {Array<Trade>} account historical trades
+   */
+  async getAccountTrades(accountId, startTime, endTime, limit = 1000, offset = 0) {
+    const opts = {
+      url: `${this._host}/users/current/accounts/${accountId}/historical-trades/${startTime}/${endTime}`,
+      method: 'GET',
+      headers: {
+        'auth-token': this._token
+      },
+      qs: {limit, offset},
+      json: true,
+    };
+    const {trades} = await this._httpClient.request(opts);
+    return trades;
+  }
+
+  /**
+   * @typedef OpenTrade historical trades
+   * @property {String} _id historical trade id
+     @property {String} accountId MetaApi account id
+     @property {Number} volume trade volume
+     @property {Number} durationInMinutes trade duration in minutes
+     @property {Number} profit trade profit
+     @property {Number} gain trade gain
+     @property {String} success trade success
+     @property {String} openTime time the trade was opened at in broker timezone, YYYY-MM-DD HH:mm:ss.SSS format
+     @property {String} type trade type
+     @property {String} symbol symbol the trade relates to
+     @property {Number} openPrice trade opening price
+     @property {Number} pips the number of pips earned (positive) or lost (negative) in this trade
+   */
+
+  /**
+   * Returns historical trades of MetaApi account
+   * @param {String} accountId MetaApi account id
+   * @return {Array<OpenTrade>} account historical trades
+   */
+  async getAccountOpenTrades(accountId) {
+    const opts = {
+      url: `${this._host}/users/current/accounts/${accountId}/open-trades`,
+      method: 'GET',
+      headers: {
+        'auth-token': this._token
+      },
+      json: true,
+    };
+    const {openTrades} = await this._httpClient.request(opts);
+    return openTrades;
+  }
 }

@@ -5,13 +5,15 @@ let MetaApi = require('metaapi.cloud-sdk').default;
 let token = process.env.TOKEN || '<put in your token here>';
 // your MetaApi account id
 let accountId = process.env.ACCOUNT_ID || '<put in your MetaApi account id here>';
+// your MetaApi account
+let account;
 
 const api = new MetaApi(token);
 const metaStats = new MetaStats(token);
 // you can configure http client via second parameter,
 // see esdoc in-code documentation for full definition of possible configuration options
 
-async function getAccountMetrics() {
+async function accountDeploy() {
   try {
     let account = await api.metatraderAccountApi.getAccount(accountId);
 
@@ -27,6 +29,15 @@ async function getAccountMetrics() {
       await account.waitConnected();
     }
 
+  } catch (err) {
+    console.error(err);
+  }
+}
+
+accountDeploy();
+
+async function getAccountMetrics() {
+  try {
     let metrics = await metaStats.getMetrics(accountId);
     console.log(metrics);//-> {trades: ..., balance: ..., ...}
 
@@ -37,3 +48,29 @@ async function getAccountMetrics() {
 }
 
 getAccountMetrics();
+
+async function getAccountTrades(startTime, endTime) {
+  try {
+    let trades = await metaStats.getAccountTrades(accountId, startTime, endTime);
+    console.log(trades);//-> {_id: ..., gain: ..., ...}
+
+  } catch (err) {
+    console.error(err);
+  }
+  process.exit();
+}
+
+getAccountTrades('2020-01-01 00:00:00.000', '2021-01-01 00:00:00.000');
+
+async function getAccountOpenTrades() {
+  try {
+    let openTrades = await metaStats.getAccountOpenTrades(accountId);
+    console.log(openTrades);//-> {_id: ..., gain: ..., ...}
+
+  } catch (err) {
+    console.error(err);
+  }
+  process.exit();
+}
+
+getAccountOpenTrades();
