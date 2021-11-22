@@ -287,8 +287,8 @@ export default class MetaStatsClient {
    */
 
   /**
-   * Returns metrics of MetaApi account
-   * https://metastats-api-v1.agiliumtrade.agiliumtrade.ai/swagger/#!/default/get_users_current_accounts_accountId_metrics
+   * Returns metrics of MetaApi account. This API call is billable
+   * https://metaapi.cloud/docs/metastats/restApi/api/calculateMetrics/
    * @param {String} accountId MetaApi account id
    * @param {Boolean} [includeOpenPositions] indicates whether open positions will be included
    * in the metrics, default false
@@ -328,21 +328,24 @@ export default class MetaStatsClient {
 
   /**
    * Returns historical trades of MetaApi account
+   * https://metaapi.cloud/docs/metastats/restApi/api/getHistoricalTrades/
    * @param {String} accountId MetaApi account id
    * @param {String} startTime start of time range, inclusive
    * @param {String} endTime end of time range, exclusive
+   * @param {Boolean} [updateHistory] update historical trades before returning results. If set to true, 
+   * the API call will be counted towards billable MetaStats API calls. If set to false, the API call is not billable.
    * @param {Number} [limit] pagination limit
    * @param {Number} [offset] pagination offset
    * @return {Array<Trade>} account historical trades
    */
-  async getAccountTrades(accountId, startTime, endTime, limit = 1000, offset = 0) {
+  async getAccountTrades(accountId, startTime, endTime, updateHistory = false, limit = 1000, offset = 0) {
     const opts = {
       url: `${this._host}/users/current/accounts/${accountId}/historical-trades/${startTime}/${endTime}`,
       method: 'GET',
       headers: {
         'auth-token': this._token
       },
-      qs: {limit, offset},
+      qs: {updateHistory, limit, offset},
       json: true,
     };
     const {trades} = await this._httpClient.request(opts);
@@ -366,7 +369,8 @@ export default class MetaStatsClient {
    */
 
   /**
-   * Returns historical trades of MetaApi account
+   * Returns open trades of MetaApi account. This API call is not billable
+   * https://metaapi.cloud/docs/metastats/restApi/api/getOpenTrades/
    * @param {String} accountId MetaApi account id
    * @return {Array<OpenTrade>} account historical trades
    */
