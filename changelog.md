@@ -1,6 +1,7 @@
 2.0.0
   - breaking change: the order of arguments for the getAccountTrades method have changed
   - added query parameter updateHistory to getAccountTrades method
+
 1.1.0
   - added getAccountTrades method
   - added getAccountOpenTrades method
