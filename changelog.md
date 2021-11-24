@@ -1,3 +1,5 @@
+2.0.1
+  - added typings for public classes and objects
 2.0.0
   - breaking change: the order of arguments for the getAccountTrades method have changed
   - added query parameter updateHistory to getAccountTrades method

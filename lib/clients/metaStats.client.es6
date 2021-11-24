@@ -309,7 +309,7 @@ export default class MetaStatsClient {
   }
 
   /**
-   * @typedef Trade historical trades
+   * @typedef Trade historical trade
    * @property {String} _id historical trade id
      @property {String} accountId MetaApi account id
      @property {Number} volume trade volume
@@ -353,7 +353,7 @@ export default class MetaStatsClient {
   }
 
   /**
-   * @typedef OpenTrade historical trades
+   * @typedef OpenTrade open trade
    * @property {String} _id historical trade id
      @property {String} accountId MetaApi account id
      @property {Number} volume trade volume
