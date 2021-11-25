@@ -41,7 +41,7 @@
     "type": "git",
     "url": "https://github.com/agiliumtrade-ai/metastats-javascript-sdk.git"
   },
-  "version": "2.0.1",
+  "version": "2.0.2",
   "dependencies": {
     "babel-runtime": "~6.26.0",
     "moment": "~2.29.1",
@@ -70,7 +70,7 @@
     "test": "mocha --exit --require babel-register lib/clients/*.spec.es6",
     "lint": "eslint --ext es6 ./lib",
     "lint:fix": "eslint --ext es6 ./lib --fix",
-    "build": "rm -rf dist; rm -rf es; npx babel lib --out-dir dist --source-maps inline --ignore lib/templates && npx webpack --config webpack.config.js && gulp && copyfiles -u 1 lib/**/*.d.ts dist",
+    "build": "rm -rf dist; rm -rf es; npx babel lib --out-dir dist --source-maps inline --ignore lib/templates && npx webpack --config webpack.config.js && gulp && copyfiles -u 1 \"lib/**/*.d.ts dist\"",
     "build-win": "rmdir /Q /S dist | rmdir /Q /S es | npx babel lib --out-dir dist --source-maps inline --ignore lib/templates && npx webpack --config webpack.config.js && gulp && copyfiles -u 1 \"lib/**/*.d.ts\" dist"
   },
   "main": "dist/index.js",

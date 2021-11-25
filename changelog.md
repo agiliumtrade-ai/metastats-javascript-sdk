@@ -1,3 +1,6 @@
+2.0.2
+  - fixed missing typings from previous release
+
 2.0.1
   - added typings for public classes and objects
 
