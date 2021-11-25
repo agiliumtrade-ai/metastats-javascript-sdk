@@ -1,4 +1,7 @@
 2.0.2
+  - fixed missing typings for browser frameworks
+
+2.0.2
   - fixed missing typings from previous release
 
 2.0.1
