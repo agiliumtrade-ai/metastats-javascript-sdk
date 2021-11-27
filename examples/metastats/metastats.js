@@ -52,7 +52,7 @@ getAccountMetrics();
 async function getAccountTrades(startTime, endTime) {
   try {
     let trades = await metaStats.getAccountTrades(accountId, startTime, endTime);
-    console.log(trades);//-> {_id: ..., gain: ..., ...}
+    console.log(trades.slice(-5));//-> {_id: ..., gain: ..., ...}
 
   } catch (err) {
     console.error(err);
