@@ -31,7 +31,7 @@ async function exampleRequest() {
     console.log(metrics);//-> {trades: ..., balance: ..., ...}
     
     let trades = await metaStats.getAccountTrades(accountId, '0000-01-01 00:00:00.000', '9999-01-01 00:00:00.000');
-    console.log(trades);//-> {_id: ..., gain: ..., ...}
+    console.log(trades.slice(-5));//-> {_id: ..., gain: ..., ...}
     
     let openTrades = await metaStats.getAccountOpenTrades(accountId);
     console.log(openTrades);//-> {_id: ..., gain: ..., ...}

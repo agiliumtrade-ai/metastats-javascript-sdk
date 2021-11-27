@@ -1,4 +1,7 @@
-2.0.2
+2.0.4
+  - improved readme and examples
+
+2.0.3
   - fixed missing typings for browser frameworks
 
 2.0.2
