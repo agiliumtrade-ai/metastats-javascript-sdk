@@ -49,7 +49,7 @@ export default class MetaStatsClient {
 /**
  * Open trade
  */
-declare type OpenTrade = {
+export declare type OpenTrade = {
 
   /**
    * _id historical trade id
@@ -115,7 +115,7 @@ declare type OpenTrade = {
 /**
  * Historical trade
  */
-declare type Trade = {
+export declare type Trade = {
 
   /**
    * historical trade id
@@ -191,7 +191,7 @@ declare type Trade = {
 /**
  * profit from trading a currency pair in one trading day
  */
-declare type CurrencySummaryHistoryDayMetrics = {
+export declare type CurrencySummaryHistoryDayMetrics = {
 
   /**
    * date of trading day, in broker timezone, YYYY-MM-DD format
@@ -232,7 +232,7 @@ declare type CurrencySummaryHistoryDayMetrics = {
 /**
  * provides general data of this currency trading
  */
-declare type CurrencySummaryTotalMetrics = {
+export declare type CurrencySummaryTotalMetrics = {
 
   /**
    * cumulative profit of this currency trading
@@ -273,7 +273,7 @@ declare type CurrencySummaryTotalMetrics = {
 /**
  * provides profit and number of trades in specific trade and currency
  */
-declare type CurrencySummaryTradeMetrics = {
+export declare type CurrencySummaryTradeMetrics = {
 
   /**
    * cumulative profit of this currency trading
@@ -296,7 +296,7 @@ declare type CurrencySummaryTradeMetrics = {
  * the amount in the context of long and short positions.
  * Statistics is given for all currency pairs, for which positions were opened
  */
-declare type CurrencySummaryMetrics = {
+export declare type CurrencySummaryMetrics = {
 
   /**
    * trading currency pair
@@ -328,7 +328,7 @@ declare type CurrencySummaryMetrics = {
  * provides statistics for one trade period compared to
  * the results for the previous period
  */
-declare type PeriodMetrics = {
+export declare type PeriodMetrics = {
 
   /**
    * cumulative profit of this period
@@ -394,7 +394,7 @@ declare type PeriodMetrics = {
 /**
  * provides statistics for today, this week, this month, this year
  */
-declare type Periods = {
+export declare type Periods = {
   
   /**
    * trade information for today
@@ -421,7 +421,7 @@ declare type Periods = {
  * provides each profit received from the volume of trade and changes in
  * balance, total accumulated income and existing account drawdown by day
  */
-declare type DailyGrowthMetrics = {
+export declare type DailyGrowthMetrics = {
 
   /**
    * date of trading day in broker timezone, YYYY-MM-DD format
@@ -477,7 +477,7 @@ declare type DailyGrowthMetrics = {
 /**
  * currency pair trading information for monthly analysis
  */
-declare type MonthlyAnalyticCurrencyMetrics = {
+export declare type MonthlyAnalyticCurrencyMetrics = {
 
   /**
    * currency pair
@@ -509,7 +509,7 @@ declare type MonthlyAnalyticCurrencyMetrics = {
 /**
  * monthly analysis of trading on this account
  */
-declare type MonthlyAnalyticsMetrics = {
+export declare type MonthlyAnalyticsMetrics = {
 
   /**
    * date of trading month in broker timezone, YYYY-MM format
@@ -551,7 +551,7 @@ declare type MonthlyAnalyticsMetrics = {
 /**
  * opening/closing deals by days of the week or by by hours of the day
  */
-declare type TradeByTimeMetrics = {
+export declare type TradeByTimeMetrics = {
 
   /**
    * date of trading month in broker timezone, YYYY-MM format
@@ -697,7 +697,7 @@ declare type TradeByTimeMetrics = {
 /**
  * risk of ruin of balance metrics
  */
-declare type RiskOfRuinMetrics = {
+export declare type RiskOfRuinMetrics = {
 
   /**
    * loss size of balance
@@ -719,7 +719,7 @@ declare type RiskOfRuinMetrics = {
 /**
  * metrics of one trade duration
  */
-declare type OneTradeDurationMetrics = {
+export declare type OneTradeDurationMetrics = {
 
   /**
    * list of gains for this duration
@@ -750,7 +750,7 @@ declare type OneTradeDurationMetrics = {
 /**
  * metrics for each duration of trades
  */
-declare type TradeDurationMetrics = {
+export declare type TradeDurationMetrics = {
 
   /**
    * metrics of winning trades
@@ -766,7 +766,7 @@ declare type TradeDurationMetrics = {
 /**
  * collection of metrics of trades in the current column for the diagram
  */
-declare type TradeDurationDiagramColumnCollectionMetrics = {
+export declare type TradeDurationDiagramColumnCollectionMetrics = {
 
   /**
    * list of gains
@@ -792,7 +792,7 @@ declare type TradeDurationDiagramColumnCollectionMetrics = {
 /**
  * information column about the duration of trades for the diagram
  */
-declare type TradeDurationDiagramColumnMetrics = {
+export declare type TradeDurationDiagramColumnMetrics = {
 
   /**
    * the number of durations in this column
@@ -833,7 +833,7 @@ declare type TradeDurationDiagramColumnMetrics = {
 /**
  * trading statistics metrics
  */
-declare type Metrics = {
+export declare type Metrics = {
 
   /**
    * indicates whether open positions are included in the metrics,

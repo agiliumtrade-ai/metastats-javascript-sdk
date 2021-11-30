@@ -34,7 +34,7 @@ export default class MetaStats {
 /**
  * connection options
  */
-declare type ConnectionOptions = {
+export declare type ConnectionOptions = {
 
   /**
    * request timeout in seconds, default 60
