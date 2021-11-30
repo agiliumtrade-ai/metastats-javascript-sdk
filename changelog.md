@@ -1,3 +1,6 @@
+2.0.5
+  - fixed export declared types in typings
+
 2.0.4
   - improved readme and examples
 
