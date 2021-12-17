@@ -8,42 +8,43 @@ export default class MetaStatsClient {
   /**
    * Constructs MetaStats API client instance
    * @param {HttpClient} httpClient HTTP client
-   * @param {String} token authorization token
-   * @param {String} [domain] domain to connect to, default is agiliumtrade.agiliumtrade.ai
+   * @param {string} token authorization token
+   * @param {string} [domain] domain to connect to, default is agiliumtrade.agiliumtrade.ai
    */
-  constructor(httpClient: HttpClient, token: String, domain?: String);
+  constructor(httpClient: HttpClient, token: string, domain?: string);
   
   /**
    * Returns metrics of MetaApi account. This API call is billable
    * https://metaapi.cloud/docs/metastats/restApi/api/calculateMetrics/
-   * @param {String} accountId MetaApi account id
-   * @param {Boolean} [includeOpenPositions] indicates whether open positions will be included
+   * @param {string} accountId MetaApi account id
+   * @param {boolean} [includeOpenPositions] indicates whether open positions will be included
    * in the metrics, default false
-   * @return {Metrics} account metrics
+   * @return {Promise<Metrics>} account metrics
    */
-  getMetrics(accountId: String, includeOpenPositions?: Boolean): Metrics;
+  getMetrics(accountId: string, includeOpenPositions?: boolean): Promise<Metrics>;
 
   /**
    * Returns historical trades of MetaApi account
    * https://metaapi.cloud/docs/metastats/restApi/api/getHistoricalTrades/
-   * @param {String} accountId MetaApi account id
-   * @param {String} startTime start of time range, inclusive
-   * @param {String} endTime end of time range, exclusive
-   * @param {Boolean} [updateHistory] update historical trades before returning results. If set to true, 
-   * the API call will be counted towards billable MetaStats API calls. If set to false, the API call is not billable.
-   * @param {Number} [limit] pagination limit
-   * @param {Number} [offset] pagination offset
-   * @return {Array<Trade>} account historical trades
+   * @param {string} accountId MetaApi account id
+   * @param {string} startTime start of time range, inclusive
+   * @param {string} endTime end of time range, exclusive
+   * @param {boolean} [updateHistory] update historical trades before returning results. 
+   * If set to true, the API call will be counted towards billable MetaStats API calls. 
+   * If set to false, the API call is not billable. Default is true
+   * @param {number} [limit] pagination limit
+   * @param {number} [offset] pagination offset
+   * @return {Promise<Array<Trade>>} account historical trades
    */
-  getAccountTrades(accountId: String, startTime: String, endTime: String, updateHistory?: Boolean, limit?: Number, offset?: Number): Array<Trade>;
+  getAccountTrades(accountId: string, startTime: string, endTime: string, updateHistory?: boolean, limit?: number, offset?: number): Promise<Array<Trade>>;
 
   /**
    * Returns open trades of MetaApi account. This API call is not billable
    * https://metaapi.cloud/docs/metastats/restApi/api/getOpenTrades/
-   * @param {String} accountId MetaApi account id
+   * @param {string} accountId MetaApi account id
    * @return {Array<OpenTrade>} account historical trades
    */
-  getAccountOpenTrades(accountId: String): Array<OpenTrade>
+  getAccountOpenTrades(accountId: string): Promise<Array<OpenTrade>>;
 }
 
 /**
@@ -54,62 +55,62 @@ export declare type OpenTrade = {
   /**
    * _id historical trade id
    */
-  _id: String,
+  _id: string,
 
   /**
    * MetaApi account id
    */
-  accountId: String,
+  accountId: string,
 
   /**
    * trade volume
    */
-  volume: Number,
+  volume: number,
 
   /**
    * trade duration in minutes
    */
-  durationInMinutes: Number,
+  durationInMinutes: number,
 
   /**
    * trade profit
    */
-  profit: Number,
+  profit: number,
 
   /**
    * trade gain
    */
-  gain: Number,
+  gain: number,
 
   /**
    * trade success
    */
-  success: String,
+  success: string,
 
   /**
    * time the trade was opened at in broker timezone, YYYY-MM-DD HH:mm:ss.SSS format
    */
-  openTime: String,
+  openTime: string,
 
   /**
    * trade type
    */
-  type: String,
+  type: string,
 
   /**
    * symbol the trade relates to
    */
-  symbol: String,
+  symbol: string,
 
   /**
    * trade opening price
    */
-  openPrice: Number,
+  openPrice: number,
 
   /**
    * the number of pips earned (positive) or lost (negative) in this trade
    */
-  pips: Number
+  pips: number
 }
 
 /**
@@ -120,72 +121,72 @@ export declare type Trade = {
   /**
    * historical trade id
    */
-  _id: String,
+  _id: string,
 
   /**
    * MetaApi account id
    */
-  accountId: String,
+  accountId: string,
 
   /**
    * trade volume
    */
-  volume: Number,
+  volume: number,
 
   /**
    * trade duration in minutes
    */
-  durationInMinutes: Number,
+  durationInMinutes: number,
 
   /**
    * trade profit
    */
-  profit: Number,
+  profit: number,
 
   /**
    * trade gain
    */
-  gain: Number,
+  gain: number,
 
   /**
    * trade success
    */
-  success: String,
+  success: string,
 
   /**
    * time the trade was opened at in broker timezone, YYYY-MM-DD HH:mm:ss.SSS format
    */
-  openTime: String,
+  openTime: string,
 
   /**
    * trade type
    */
-  type: String,
+  type: string,
 
   /**
    * symbol the trade relates to
    */
-  symbol?: String,
+  symbol?: string,
 
   /**
    * time the trade was closed at in broker timezone, YYYY-MM-DD HH:mm:ss.SSS format
    */
-  closeTime?: String,
+  closeTime?: string,
 
   /**
    * trade opening price
    */
-  openPrice?: Number,
+  openPrice?: number,
 
   /**
    * trade closing price
    */
-  closePrice?: Number,
+  closePrice?: number,
 
   /**
    * the number of pips earned (positive) or lost (negative) in this trade
    */
-  pips?: Number
+  pips?: number
 }
 
 /**
@@ -196,37 +197,37 @@ export declare type CurrencySummaryHistoryDayMetrics = {
   /**
    * date of trading day, in broker timezone, YYYY-MM-DD format
    */
-  date: String,
+  date: string,
 
   /**
    * total profit at the end of the day
    */
-  totalProfit: Number,
+  totalProfit: number,
 
   /**
    * total pips of trading day
    */
-  totalPips?: Number,
+  totalPips?: number,
 
   /**
    * total profit of short trades per day
    */
-  shortProfit?: Number,
+  shortProfit?: number,
 
   /**
    * total profit of long trades per day
    */
-  longProfit?: Number,
+  longProfit?: number,
 
   /**
    * total pips of short trades per day
    */
-  shortPips?: Number,
+  shortPips?: number,
 
   /**
    * total pips of long trades per day
    */
-  longPips?: Number
+  longPips?: number
 }
 
 /**
@@ -237,37 +238,37 @@ export declare type CurrencySummaryTotalMetrics = {
   /**
    * cumulative profit of this currency trading
    */
-  profit: Number,
+  profit: number,
 
   /**
    * the number of all trades with this currency
    */
-  trades: Number,
+  trades: number,
 
   /**
    * cumulative pips of this currency trading
    */
-  pips?: Number,
+  pips?: number,
 
   /**
    * the number of winning trades with this currency
    */
-  wonTrades?: Number,
+  wonTrades?: number,
 
   /**
    * the number of losing trades with this currency
    */
-  lostTrades?: Number,
+  lostTrades?: number,
 
   /**
    * percentage of winning trades with this currency
    */
-  wonTradesPercent?: Number,
+  wonTradesPercent?: number,
 
   /**
    * percentage of losing trades with this currency
    */
-  lostTradesPercent?: Number
+  lostTradesPercent?: number
 }
 
 /**
@@ -278,17 +279,17 @@ export declare type CurrencySummaryTradeMetrics = {
   /**
    * cumulative profit of this currency trading
    */
-  profit: Number,
+  profit: number,
 
   /**
    * the number of all trades with this currency
    */
-  trades: Number,
+  trades: number,
 
   /**
    * cumulative pips of this currency trading
    */
-  pips?: Number
+  pips?: number
 }
 
 /**
@@ -301,7 +302,7 @@ export declare type CurrencySummaryMetrics = {
   /**
    * trading currency pair
    */
-  currency: String,
+  currency: string,
 
   /**
    * history of trading a currency pair per trading days
@@ -333,62 +334,62 @@ export declare type PeriodMetrics = {
   /**
    * cumulative profit of this period
    */
-  profit: Number,
+  profit: number,
 
   /**
    * cumulative pips of this period
    */
-  pips: Number,
+  pips: number,
 
   /**
    * cumulative lots of this period
    */
-  lots: Number,
+  lots: number,
 
   /**
    * gain of this period
    */
-  gain: Number,
+  gain: number,
 
   /**
    * the number of trades of this period
    */
-  trades: Number,
+  trades: number,
 
   /**
    * percentage of winning trades of this period
    */
-  wonTradesPercent: Number,
+  wonTradesPercent: number,
 
   /**
    * difference in profit with the previous period
    */
-  profitDifference: Number,
+  profitDifference: number,
 
   /**
    * difference in pips with the previous period
    */
-  pipsDifference: Number,
+  pipsDifference: number,
 
   /**
    * difference in lots with the previous period 
    */
-  lotsDifference: Number,
+  lotsDifference: number,
 
   /**
    * difference in gain with the previous period
    */
-  gainDifference: Number,
+  gainDifference: number,
 
   /**
    * difference in the number of trades with the previous period
    */
-  tradesDifference: Number,
+  tradesDifference: number,
 
   /**
    * difference in percentage of winning trades with the previous period
    */
-  wonTradesPercentDifference: Number
+  wonTradesPercentDifference: number
 }
 
 /**
@@ -426,52 +427,52 @@ export declare type DailyGrowthMetrics = {
   /**
    * date of trading day in broker timezone, YYYY-MM-DD format
    */
-  date: String,
+  date: string,
 
   /**
    * cumulative profit per day
    */
-  profit?: Number,
+  profit?: number,
 
   /**
    * cumulative pips per day
    */
-  pips?: Number,
+  pips?: number,
 
   /**
    * cumulative lots per day
    */
-  lots?: Number,
+  lots?: number,
 
   /**
    * cumulative gains per day
    */
-  gains?: Number,
+  gains?: number,
 
   /**
    * total profit in this day end
    */
-  totalProfit: Number,
+  totalProfit: number,
 
   /**
    * total gains in this day end
    */
-  totalGains: Number,
+  totalGains: number,
 
   /**
    * balance in this day end
    */
-  balance: Number,
+  balance: number,
 
   /**
    * percentage of balance drawdown in this day end
    */
-  drawdownPercentage?: Number,
+  drawdownPercentage?: number,
 
   /**
    * maximum registered balance drawdown in basic currency during this day
    */
-  drawdownProfit?: Number
+  drawdownProfit?: number
 }
 
 /**
@@ -482,28 +483,28 @@ export declare type MonthlyAnalyticCurrencyMetrics = {
   /**
    * currency pair
    */
-  currency: String,
+  currency: string,
 
   /**
    * average holding time of long trades
    */
-  averageHoldingTimeLongsInMilliseconds?: Number,
+  averageHoldingTimeLongsInMilliseconds?: number,
 
   /**
    * average holding time of short trades
    */
-  averageHoldingTimeShortsInMilliseconds?: Number,
+  averageHoldingTimeShortsInMilliseconds?: number,
 
   /**
    * the difference between reward and risk, where the lesser is always one.
    * So 0 means reward:risk=1:1, 2 means 3:1, -0.5 means 1:1.5
    */
-  rewardToRiskRatio: Number,
+  rewardToRiskRatio: number,
 
   /**
    * the percentage of popularity of this currency this month
    */
-  popularityPercent: Number
+  popularityPercent: number
 }
 
 /**
@@ -514,32 +515,32 @@ export declare type MonthlyAnalyticsMetrics = {
   /**
    * date of trading month in broker timezone, YYYY-MM format
    */
-  date: String,
+  date: string,
 
   /**
    * cumulative profit per month
    */
-  profit: Number,
+  profit: number,
 
   /**
    * cumulative pips per month
    */
-  pips: Number,
+  pips: number,
 
   /**
    * cumulative lots per month
    */
-  lots: Number,
+  lots: number,
 
   /**
    * cumulative gains per month
    */
-  gains: Number,
+  gains: number,
 
   /**
    * the number of trades of this month
    */
-  trades: Number,
+  trades: number,
 
   /**
    * @property {Array<MonthlyAnalyticCurrencyMetrics>} [currencies] list of currency pair trading
@@ -556,142 +557,142 @@ export declare type TradeByTimeMetrics = {
   /**
    * date of trading month in broker timezone, YYYY-MM format
    */
-  date: String,
+  date: string,
 
   /**
    * the total profit of the trades at this time
    */
-  profit: Number,
+  profit: number,
 
   /**
    * the total profit of short trades at this time
    */
-  shortProfit?: Number,
+  shortProfit?: number,
 
   /**
    * the total profit of long trades at this time
    */
-  longProfit?: Number,
+  longProfit?: number,
 
   /**
    * the total profit of winning trades at this time
    */
-  wonProfit?: Number,
+  wonProfit?: number,
 
   /**
    * the total profit of losing trades at this time
    */
-  lostProfit?: Number,
+  lostProfit?: number,
 
   /**
    * the total pips of the trades at this time
    */
-  pips?: Number,
+  pips?: number,
 
   /**
    * the total pips of short trades at this time
    */
-  shortPips?: Number,
+  shortPips?: number,
 
   /**
    * the total pips of long trades at this time
    */
-  longPips?: Number,
+  longPips?: number,
 
   /**
    * the total pips of winning trades at this time
    */
-  wonPips?: Number,
+  wonPips?: number,
 
   /**
    * the total pips of losing trades at this time
    */
-  lostPips?: Number,
+  lostPips?: number,
 
   /**
    * cumulative lots of trades at this time 
    */
-  lots: Number,
+  lots: number,
 
   /**
    * cumulative gains of trades at this time
    */
-  gains: Number,
+  gains: number,
 
   /**
    * cumulative gains of short trades at this time
    */
-  shortGains?: Number,
+  shortGains?: number,
 
   /**
    * cumulative gains of long trades at this time
    */
-  longGains?: Number,
+  longGains?: number,
 
   /**
    * cumulative gains of winning trades at this time
    */
-  wonGains?: Number,
+  wonGains?: number,
 
   /**
    * cumulative gains of losing trades at this time
    */
-  lostGains?: Number,
+  lostGains?: number,
 
   /**
    * the number of all trades at this time
    */
-  trades: Number,
+  trades: number,
 
   /**
    * the number of short trades at this time
    */
-  shortTrades?: Number,
+  shortTrades?: number,
 
   /**
    * the number of long trades at this time
    */
-  longTrades?: Number,
+  longTrades?: number,
 
   /**
    * the number of winning trades at this time
    */
-  wonTrades?: Number,
+  wonTrades?: number,
 
   /**
    * the number of losing trades at this time
    */
-  lostTrades?: Number,
+  lostTrades?: number,
 
   /**
    * percentage of short trades at this time
    */
-  shortTradesPercent?: Number,
+  shortTradesPercent?: number,
 
   /**
    * percentage of long trades at this time
    */
-  longTradesPercent?: Number,
+  longTradesPercent?: number,
 
   /**
    * percentage of winning trades at this time
    */
-  wonTradesPercent?: Number,
+  wonTradesPercent?: number,
 
   /**
    * percentage of losing trades at this time
    */
-  lostTradesPercent?: Number,
+  lostTradesPercent?: number,
 
   /**
    * day hour (only for by hour case)', within 0-23
    */
-  hour?: Number,
+  hour?: number,
 
   /**
    * weekday number (only for by day case), within 0-6
    */
-  day?: Number
+  day?: number
 }
 
 /**
@@ -702,18 +703,18 @@ export declare type RiskOfRuinMetrics = {
   /**
    * loss size of balance
    */
-  lossSize: Number,
+  lossSize: number,
 
   /**
    * probability of loss shows the risk of losing a particular part of the balance
    */
-  probabilityOfLoss: Number,
+  probabilityOfLoss: number,
 
   /**
    * the number of losing trades that must be entered sequentially
    * in order for this part of the balance to be lost
    */
-  consecutiveLosingTrades: Number
+  consecutiveLosingTrades: number
 }
 
 /**
@@ -724,27 +725,27 @@ export declare type OneTradeDurationMetrics = {
   /**
    * list of gains for this duration
    */
-  gains: Array<Number>,
+  gains: Array<number>,
 
   /**
    * list of profits for this duration
    */
-  profits: Array<Number>,
+  profits: Array<number>,
 
   /**
    * list of lots for this duration
    */
-  lots: Array<Number>,
+  lots: Array<number>,
 
   /**
    * list of pips for this duration
    */
-  pips?: Array<Number>,
+  pips?: Array<number>,
 
   /**
    * duration of trades in minutes
    */
-  durationInMinutes: Number
+  durationInMinutes: number
 }
 
 /**
@@ -771,22 +772,22 @@ export declare type TradeDurationDiagramColumnCollectionMetrics = {
   /**
    * list of gains
    */
-  gains: Array<Number>,
+  gains: Array<number>,
 
   /**
    * list of profits
    */
-  profits: Array<Number>,
+  profits: Array<number>,
 
   /**
    * list of lots
    */
-  lots: Array<Number>,
+  lots: Array<number>,
 
   /**
    * list of pips
    */
-  pips?: Array<Number>
+  pips?: Array<number>
 }
 
 /**
@@ -797,27 +798,27 @@ export declare type TradeDurationDiagramColumnMetrics = {
   /**
    * the number of durations in this column
    */
-  durations: Number,
+  durations: number,
 
   /**
    * the number of trades in this column
    */
-  trades: Number,
+  trades: number,
 
   /**
    * name of this column, one of 'seconds', 'minutes', 'hours', 'days', 'weeks', 'months'
    */
-  name: String,
+  name: string,
 
   /**
    * minimum trade duration in this column in seconds
    */
-  minDurationInSeconds: Number,
+  minDurationInSeconds: number,
 
   /**
    * maximum trade duration in this column in seconds
    */
-  maxDurationInSeconds?: Number,
+  maxDurationInSeconds?: number,
 
   /**
    * collection of metrics of winning trades in this column
@@ -839,301 +840,301 @@ export declare type Metrics = {
    * indicates whether open positions are included in the metrics,
    * "false" means that there are no open positions. Only for a request with includeOpenPositions=true
    */
-  inclusive?: Boolean,
+  inclusive?: boolean,
 
   /**
    * money on the account, not accounting for the results of currently open positions
    */
-  balance: Number,
+  balance: number,
 
   /**
    * date of maximum balance that have ever been on the account,
    * in broker timezone, YYYY-MM-DD HH:mm:ss.SSS format
    */
-  highestBalanceDate?: String,
+  highestBalanceDate?: string,
 
   /**
    * maximum balance that have ever been on the account
    */
-  highestBalance?: Number,
+  highestBalance?: number,
 
   /**
    * the result (current amount) of all positions, including opened
    */
-  equity: Number,
+  equity: number,
 
   /**
    * current value of margin
    */
-  margin: Number,
+  margin: number,
 
   /**
    * current value of free margin
    */
-  freeMargin: Number,
+  freeMargin: number,
 
   /**
    * current value of margin level 
    */
-  marginLevel?: Number,
+  marginLevel?: number,
 
   /**
    * total number of closed positions on the account
    */
-  trades: Number,
+  trades: number,
 
   /**
    * total amount withdrawn from the deposit
    */
-  withdrawals?: Number,
+  withdrawals?: number,
 
   /**
    * average trade length
    * (time from open to close) in milliseconds
    */
-  averageTradeLengthInMilliseconds?: Number,
+  averageTradeLengthInMilliseconds?: number,
 
   /**
    * the best profit from one trade that has ever been on the account
    */
-  bestTrade?: Number,
+  bestTrade?: number,
 
   /**
    * the worst profit from one trade that has ever been on the account
    */
-  worstTrade?: Number,
+  worstTrade?: number,
 
   /**
    * the best pips from one trade that has ever been on the account
    */
-  bestTradePips?: Number,
+  bestTradePips?: number,
 
   /**
    * the worst pips from one trade that has ever been on the account
    */
-  worstTradePips?: Number,
+  worstTradePips?: number,
 
   /**
    * date of the best profit from one trade that have ever been on the account,
    * in broker timezone, YYYY-MM-DD HH:mm:ss.SSS format
    */
-  bestTradeDate?: String,
+  bestTradeDate?: string,
 
   /**
    * date of the best pips from one trade that have ever been on the account,
    * in broker timezone, YYYY-MM-DD HH:mm:ss.SSS format
    */
-  bestTradePipsDate?: String,
+  bestTradePipsDate?: string,
 
   /**
    * date of the worst profit from one trade that have ever been on the account,
    * in broker timezone, YYYY-MM-DD HH:mm:ss.SSS format
    */
-  worstTradeDate?: String,
+  worstTradeDate?: string,
 
   /**
    * date of the worst pips from one trade that have ever been on the account,
    * in broker timezone, YYYY-MM-DD HH:mm:ss.SSS format
    */
-  worstTradePipsDate?: String,
+  worstTradePipsDate?: string,
 
   /**
    * compound annual growth rate
    */
-  cagr?: Number,
+  cagr?: number,
 
   /**
    * commissions charged by the broker for the entire period
    */
-  commissions?: Number,
+  commissions?: number,
 
   /**
    * compound daily rate of return
    */
-  dailyGain?: Number,
+  dailyGain?: number,
 
   /**
    * compound monthly rate of return
    */
-  monthlyGain?: Number,
+  monthlyGain?: number,
 
   /**
    * percentage of current equity to balance
    */
-  equityPercent?: Number,
+  equityPercent?: number,
 
   /**
    * the average expected profitability of one trade in basic currency
    */
-  expectancy?: Number,
+  expectancy?: number,
 
   /**
    * the average expected profitability of one trade in pips
    */
-  expectancyPips?: Number,
+  expectancyPips?: number,
 
   /**
    * time-weighted rate of return
    */
-  gain?: Number,
+  gain?: number,
 
   /**
    * geometric holding period return
    */
-  geometricHoldingPeriodReturn?: Number,
+  geometricHoldingPeriodReturn?: number,
 
   /**
    * cumulative interest and swap for the entire period
    */
-  interest?: Number,
+  interest?: number,
 
   /**
    * the number of long trades
    */
-  longTrades?: Number,
+  longTrades?: number,
 
   /**
    * the number of short trades
    */
-  shortTrades?: Number,
+  shortTrades?: number,
 
   /**
    * the number of long winning trades
    */
-  longWonTrades?: Number,
+  longWonTrades?: number,
 
   /**
    * the number of short winning trades
    */
-  shortWonTrades?: Number,
+  shortWonTrades?: number,
 
   /**
    * percentage of long winning trades
    */
-  longWonTradesPercent?: Number,
+  longWonTradesPercent?: number,
 
   /**
    * percentage of short winning trades
    */
-  shortWonTradesPercent?: Number,
+  shortWonTradesPercent?: number,
 
   /**
    * percentage of maximum drawdown of balance during the entire trading history
    */
-  maxDrawdown?: Number,
+  maxDrawdown?: number,
 
   /**
    * mar ratio
    */
-  mar?: Number,
+  mar?: number,
 
   /**
    *  total volume of trades
    */
-  lots?: Number,
+  lots?: number,
 
   /**
    * cumulative price units
    */
-  pips?: Number,
+  pips?: number,
 
   /**
    * the total yield of closed positions for the entire period (total result)
    */
-  profit: Number,
+  profit: number,
 
   /**
    * cumulative deposit for the entire period
    */
-  deposits: Number,
+  deposits: number,
 
   /**
    * simple deposit increase without regard to reinvestment
    */
-  absoluteGain?: Number,
+  absoluteGain?: number,
 
   /**
    * the amount yielded by winning trades divided by the amount
    * of losses yielded by losing trades. Result in range 0 - Infinity means: `0` - only loss, `1` - profit equals to
    * loss, `Infinity` - only profit.
    */
-  profitFactor?: Number,
+  profitFactor?: number,
 
   /**
    * average return earned in excess of the risk-free rate per unit of volatility.
    * It is calculated if there are at least 30 closed deals in the history
    */
-  sharpeRatio?: Number,
+  sharpeRatio?: number,
 
   /**
    * differentiates harmful volatility from total overall volatility.
    * It is calculated if there are at least 30 closed deals in the history
    */
-  sortinoRatio?: Number,
+  sortinoRatio?: number,
 
   /**
    * statistical measure of volatility shows how much
    * variation or dispersion. It is calculated if there are at least 30 closed deals in the history
    */
-  standardDeviationProfit?: Number,
+  standardDeviationProfit?: number,
 
   /**
    * a statistical measure that is used to describe profit distribution.
    * It is calculated if there are at least 30 closed deals in the history
    */
-  kurtosisProfit?: Number,
+  kurtosisProfit?: number,
 
   /**
    * average holding period return.
    * It is calculated if there are at least 30 closed deals in the history
    */
-  averageHoldingPeriodReturn?: Number,
+  averageHoldingPeriodReturn?: number,
 
   /**
    * average win in basic currency
    */
-  averageWin?: Number,
+  averageWin?: number,
 
   /**
    * average win in pips
    */
-  averageWinPips?: Number,
+  averageWinPips?: number,
 
   /**
    * average loss in basic currency
    */
-  averageLoss?: Number,
+  averageLoss?: number,
 
   /**
    * average loss in pips
    */
-  averageLossPips?: Number,
+  averageLossPips?: number,
 
   /**
    * percentage of winning trades
    */
-  wonTradesPercent?: Number,
+  wonTradesPercent?: number,
 
   /**
    * percentage of losing trades
    */
-  lostTradesPercent?: Number,
+  lostTradesPercent?: number,
 
   /**
    * ability of a trading system to generate wins and losses in streaks.
    * It is calculated if there are at least 30 closed deals in the history
    */
-  zScore?: Number,
+  zScore?: number,
 
   /**
    * probability that a profit will be followed by a profit and a loss by a loss
    */
-  probability?: Number,
+  probability?: number,
 
   /**
    * the number of days that have passed since the opening of the first trade
    */
-  daysSinceTradingStarted?: Number,
+  daysSinceTradingStarted?: number,
 
   /**
    * currency trading summary

@@ -5,7 +5,7 @@ export default class TimeoutError extends Error {
 
   /**
    * Constructs the timeout error
-   * @param {String} message error message
+   * @param {string} message error message
    */
-  constructor(message: String);
+  constructor(message: string);
 }
