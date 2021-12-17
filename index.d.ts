@@ -1,1 +1,1 @@
-declare module 'metaapi-metastats-sdk';
+export * from './lib';

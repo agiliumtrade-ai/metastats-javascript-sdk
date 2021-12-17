@@ -332,13 +332,14 @@ export default class MetaStatsClient {
    * @param {String} accountId MetaApi account id
    * @param {String} startTime start of time range, inclusive
    * @param {String} endTime end of time range, exclusive
-   * @param {Boolean} [updateHistory] update historical trades before returning results. If set to true, 
-   * the API call will be counted towards billable MetaStats API calls. If set to false, the API call is not billable.
+   * @param {Boolean} [updateHistory] update historical trades before returning results. 
+   * If set to true, the API call will be counted towards billable MetaStats API calls. 
+   * If set to false, the API call is not billable. Default is true
    * @param {Number} [limit] pagination limit
    * @param {Number} [offset] pagination offset
    * @return {Array<Trade>} account historical trades
    */
-  async getAccountTrades(accountId, startTime, endTime, updateHistory = false, limit = 1000, offset = 0) {
+  async getAccountTrades(accountId, startTime, endTime, updateHistory = true, limit = 1000, offset = 0) {
     const opts = {
       url: `${this._host}/users/current/accounts/${accountId}/historical-trades/${startTime}/${endTime}`,
       method: 'GET',

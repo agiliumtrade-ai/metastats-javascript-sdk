@@ -107,7 +107,7 @@ describe('MetaStatsClient', () => {
         method: 'GET',
         headers: {'auth-token': token},
         json: true,
-        qs: {updateHistory: false, limit: 1000, offset: 0}
+        qs: {updateHistory: true, limit: 1000, offset: 0}
       });
     });
   });
