@@ -1,3 +1,6 @@
+3.0.1
+  - fix broken release
+
 3.0.0
   - breaking change: changed default value for updateHistory parameter getAccountTrades method
   - breaking change: updated typescript types
