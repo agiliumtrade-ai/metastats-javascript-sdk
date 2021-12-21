@@ -1,6 +1,6 @@
 3.0.0
   - breaking change: changed default value for updateHistory parameter getAccountTrades method
-  - updated typescript types
+  - breaking change: updated typescript types
 
 2.0.5
   - fixed export declared types in typings
