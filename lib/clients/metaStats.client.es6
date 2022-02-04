@@ -11,10 +11,8 @@ export default class MetaStatsClient {
    * @param {String} token authorization token
    * @param {String} [domain] domain to connect to, default is agiliumtrade.agiliumtrade.ai
    */
-  constructor(httpClient, token, domain = 'agiliumtrade.agiliumtrade.ai') {
-    this._httpClient = httpClient;
-    this._host = `https://metastats-api-v1.${domain}`;
-    this._token = token;
+  constructor(domainClient) {
+    this._domainClient = domainClient;
   }
 
   /**
@@ -295,16 +293,18 @@ export default class MetaStatsClient {
    * @return {Metrics} account metrics
    */
   async getMetrics(accountId, includeOpenPositions = false) {
-    const opts = {
-      url: `${this._host}/users/current/accounts/${accountId}/metrics`,
+
+    const getOpts = (host, id) => ({
+      url: host + `/users/current/accounts/${id}/metrics`,
       method: 'GET',
       headers: {
-        'auth-token': this._token
+        'auth-token': this._domainClient.token
       },
       qs: {includeOpenPositions},
       json: true,
-    };
-    const {metrics} = await this._httpClient.request(opts);
+    });
+  
+    const {metrics} = await this._domainClient.requestMetastats(getOpts, accountId);
     return metrics;
   }
 
@@ -340,16 +340,18 @@ export default class MetaStatsClient {
    * @return {Array<Trade>} account historical trades
    */
   async getAccountTrades(accountId, startTime, endTime, updateHistory = true, limit = 1000, offset = 0) {
-    const opts = {
-      url: `${this._host}/users/current/accounts/${accountId}/historical-trades/${startTime}/${endTime}`,
+
+    const getOpts = (host, id) => ({
+      url: host + `/users/current/accounts/${id}/historical-trades/${startTime}/${endTime}`,
       method: 'GET',
       headers: {
-        'auth-token': this._token
+        'auth-token': this._domainClient.token
       },
       qs: {updateHistory, limit, offset},
       json: true,
-    };
-    const {trades} = await this._httpClient.request(opts);
+    });
+
+    const {trades} = await this._domainClient.requestMetastats(getOpts, accountId);
     return trades;
   }
 
@@ -376,15 +378,17 @@ export default class MetaStatsClient {
    * @return {Array<OpenTrade>} account historical trades
    */
   async getAccountOpenTrades(accountId) {
-    const opts = {
-      url: `${this._host}/users/current/accounts/${accountId}/open-trades`,
+
+    const getOpts = (host, id) => ({
+      url: host + `/users/current/accounts/${id}/open-trades`,
       method: 'GET',
       headers: {
-        'auth-token': this._token
+        'auth-token': this._domainClient.token
       },
       json: true,
-    };
-    const {openTrades} = await this._httpClient.request(opts);
+    });
+
+    const {openTrades} = await this._domainClient.requestMetastats(getOpts, accountId);
     return openTrades;
   }
 }

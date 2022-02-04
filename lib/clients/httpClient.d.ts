@@ -16,6 +16,13 @@ export default class HttpClient {
    * @returns {Object|string|any} request result
    */
   request(options: Object): Object | string | any;
+
+  /**
+   * Performs a request with failover. Response errors are returned as ApiError or subclasses.
+   * @param {Object} options request options
+   * @returns {Object|string|any} request result
+   */
+  requestWithFailover(options: Object): Object | string | any;
 }
 
 /**

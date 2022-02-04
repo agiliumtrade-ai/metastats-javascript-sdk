@@ -2,13 +2,35 @@
 
 import should from 'should';
 import sinon  from 'sinon';
-import HttpClient from './httpClient';
 import MetaStatsClient from './metaStats.client';
 
 /**
-   * @test {MetaStatsClient}
-   */
+ * @test {MetaStatsClient}
+ */
 describe('MetaStatsClient', () => {
+  
+  const accountId = '1234567';
+  const token = 'token.payload.sign';
+  const host = 'agiliumtrade.ai';
+  const domainClient = {
+    requestMetastats: () => {},
+    token: token
+  };
+  let metaStatsClient, sandbox, requestStub;
+
+  before(() => {
+    sandbox = sinon.createSandbox();
+  });
+  
+  beforeEach(() => {
+    metaStatsClient = new MetaStatsClient(domainClient, token);
+    requestStub = sandbox.stub(domainClient, 'requestMetastats');
+  });
+
+  afterEach(() => {
+    sandbox.resetHistory();
+    sandbox.restore();
+  });
 
   /**
    * @test {MetaStatsClient#getMetrics}
@@ -16,99 +38,78 @@ describe('MetaStatsClient', () => {
   describe('MetaStatsClient#getMetrics', () => {
 
     const expected = {trades: 10, equity: 10102.5, balance: 10105, profit: 104, deposits: 10001};
-    const token = 'token.payload.sign';
-    const accountId = '1234567';
-    const httpClient = new HttpClient();
-    let metaStatsClient;
-    let sandbox;
-
-    before(() => {
-      metaStatsClient = new MetaStatsClient(httpClient, token);
-      sandbox = sinon.createSandbox();
-      sandbox.stub(httpClient, 'request').resolves({metrics: expected});
-    });
 
     beforeEach(() => {
-      metaStatsClient = new MetaStatsClient(httpClient, token);
+      requestStub.resolves({metrics: expected});
     });
 
-    afterEach(() => {
-      sandbox.resetHistory();
-    });
-
-    after(() => {
-      sandbox.restore();
-    });
-
+    /**
+     * @test {MetaStatsClient#getMetrics}
+     */
     it('should retrieve account metrics from API', async () => {
       const metrics = await metaStatsClient.getMetrics(accountId);
       metrics.should.be.eql(expected);
-      sinon.assert.calledOnceWithExactly(httpClient.request, {
-        url: `https://metastats-api-v1.agiliumtrade.agiliumtrade.ai/users/current/accounts/${accountId}/metrics`,
-        method: 'GET',
-        headers: {'auth-token': token},
-        json: true,
-        qs: {includeOpenPositions: false}
-      });
+      const args = requestStub.getCall(0).args;
+      sinon.assert.match(args[0](host, accountId),
+        {url: 'agiliumtrade.ai/users/current/accounts/1234567/metrics',
+          method: 'GET',
+          headers: {'auth-token': token},
+          json: true,
+          qs: {includeOpenPositions: false}
+        }
+      );
+      sinon.assert.match(args[1], '1234567');
     });
 
+    /**
+     * @test {MetaStatsClient#getMetrics}
+     */
     it('should retrieve account metrics with included open positions from API', async () => {
       expected.inclusive = false;
       const metrics = await metaStatsClient.getMetrics(accountId, true);
       metrics.should.be.eql(expected);
-      sinon.assert.calledOnceWithExactly(httpClient.request, {
-        url: `https://metastats-api-v1.agiliumtrade.agiliumtrade.ai/users/current/accounts/${accountId}/metrics`,
-        method: 'GET',
-        headers: {'auth-token': token},
-        json: true,
-        qs: {includeOpenPositions: true}
-      });
+      const args = requestStub.getCall(0).args;
+      sinon.assert.match(args[0](host, accountId),
+        {url: 'agiliumtrade.ai/users/current/accounts/1234567/metrics',
+          method: 'GET',
+          headers: {'auth-token': token},
+          json: true,
+          qs: {includeOpenPositions: true}
+        }
+      );
+      sinon.assert.match(args[1], '1234567');
     });
 
   });
 
   /**
-   * @test {MetaStatsClient#getTrades}
+   * @test {MetaStatsClient#getAccountTrades}
    */
-  describe('MetaStatsClient#getTrades', () => {
-    const expected = {};
-    const token = 'token.payload.sign';
-    const accountId = '1234567';
-    const httpClient = new HttpClient();
+  describe('MetaStatsClient#getAccountTrades', () => {
+    const expected = [{_id: '1'}];
     const startTime = '2020-01-01 00:00:00.000';
     const endTime = '2021-01-01 00:00:00.000';
-    let metaStatsClient;
-    let sandbox;
-
-    before(() => {
-      metaStatsClient = new MetaStatsClient(httpClient, token);
-      sandbox = sinon.createSandbox();
-      sandbox.stub(httpClient, 'request').resolves({trades: expected});
-    });
 
     beforeEach(() => {
-      metaStatsClient = new MetaStatsClient(httpClient, token);
+      requestStub.resolves({trades: expected});
     });
 
-    afterEach(() => {
-      sandbox.resetHistory();
-    });
-
-    after(() => {
-      sandbox.restore();
-    });
-
+    /**
+     * @test {MetaStatsClient#getAccountTrades}
+     */
     it('should retrieve account trades from API', async () => {
       const trades = await metaStatsClient.getAccountTrades(accountId, startTime, endTime);
       trades.should.be.eql(expected);
-      sinon.assert.calledOnceWithExactly(httpClient.request, {
-        url: `https://metastats-api-v1.agiliumtrade.agiliumtrade.ai/users/current/accounts/${accountId}` + 
-          `/historical-trades/${startTime}/${endTime}`,
-        method: 'GET',
-        headers: {'auth-token': token},
-        json: true,
-        qs: {updateHistory: true, limit: 1000, offset: 0}
-      });
+      const args = requestStub.getCall(0).args;
+      sinon.assert.match(args[0](host, accountId),
+        {url: `agiliumtrade.ai/users/current/accounts/1234567/historical-trades/${startTime}/${endTime}`,
+          method: 'GET',
+          headers: {'auth-token': token},
+          json: true,
+          qs: {updateHistory: true, limit: 1000, offset: 0}
+        }
+      );
+      sinon.assert.match(args[1], '1234567');
     });
   });
   
@@ -116,40 +117,27 @@ describe('MetaStatsClient', () => {
    * @test {MetaStatsClient#getOpenTrades}
    */
   describe('MetaStatsClient#getOpenTrades', () => {
-    const expected = {};
-    const token = 'token.payload.sign';
-    const accountId = '1234567';
-    const httpClient = new HttpClient();
-    let metaStatsClient;
-    let sandbox;
-
-    before(() => {
-      metaStatsClient = new MetaStatsClient(httpClient, token);
-      sandbox = sinon.createSandbox();
-      sandbox.stub(httpClient, 'request').resolves({openTrades: expected});
-    });
+    const expected = [{_id: '1'}];
 
     beforeEach(() => {
-      metaStatsClient = new MetaStatsClient(httpClient, token);
+      requestStub.resolves({openTrades: expected});
     });
 
-    afterEach(() => {
-      sandbox.resetHistory();
-    });
-
-    after(() => {
-      sandbox.restore();
-    });
-
+    /**
+     * @test {MetaStatsClient#getOpenTrades}
+     */
     it('should retrieve account open trades from API', async () => {
       const openTrades = await metaStatsClient.getAccountOpenTrades(accountId);
       openTrades.should.be.eql(expected);
-      sinon.assert.calledOnceWithExactly(httpClient.request, {
-        url: `https://metastats-api-v1.agiliumtrade.agiliumtrade.ai/users/current/accounts/${accountId}/open-trades`,
-        method: 'GET',
-        headers: {'auth-token': token},
-        json: true
-      });
+      const args = requestStub.getCall(0).args;
+      sinon.assert.match(args[0](host, accountId),
+        {url: 'agiliumtrade.ai/users/current/accounts/1234567/open-trades',
+          method: 'GET',
+          headers: {'auth-token': token},
+          json: true,
+        }
+      );
+      sinon.assert.match(args[1], '1234567');
     });
   });
 });
