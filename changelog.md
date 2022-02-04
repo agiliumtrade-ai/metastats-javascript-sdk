@@ -1,3 +1,6 @@
+3.1.0
+  - added region support
+
 3.0.1
   - fix broken release
 

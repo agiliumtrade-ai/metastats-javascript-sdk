@@ -35,7 +35,33 @@ export default class HttpClient {
    * @param {Object} options request options
    * @returns {Object|String|any} request result
    */
-  async request(options, retryCounter = 0, endTime = Date.now() + this._maxRetryDelay * this._retries) {
+  async request(options, endTime = Date.now() + this._maxRetryDelay * this._retries) {
+    options.timeout = this._timeout;
+    let retryAfterSeconds = 0;
+    options.callback = (e, res) => {
+      if (res && res.statusCode === 202) {
+        retryAfterSeconds = res.headers['retry-after'];
+      }
+    };
+    let body;
+    try {
+      body = await this._makeRequest(options);
+    } catch (err) {
+      throw this._convertError(err);
+    }
+    if (retryAfterSeconds) {
+      await this._handleRetry(endTime, retryAfterSeconds * 1000);
+      body = await this.request(options, endTime);
+    }
+    return body;
+  }
+
+  /**
+   * Performs a request with failover. Response errors are returned as ApiError or subclasses.
+   * @param {Object} options request options
+   * @returns {Object|String|any} request result
+   */
+  async requestWithFailover(options, retryCounter = 0, endTime = Date.now() + this._maxRetryDelay * this._retries) {
     options.timeout = this._timeout;
     let retryAfterSeconds = 0;
     options.callback = (e, res) => {
@@ -48,11 +74,11 @@ export default class HttpClient {
       body = await this._makeRequest(options);
     } catch (err) {
       retryCounter = await this._handleError(err, retryCounter, endTime);
-      return this.request(options, retryCounter, endTime);
+      return this.requestWithFailover(options, retryCounter, endTime);
     }
     if (retryAfterSeconds) {
       await this._handleRetry(endTime, retryAfterSeconds * 1000);
-      body = await this.request(options, retryCounter, endTime);
+      body = await this.requestWithFailover(options, retryCounter, endTime);
     }
     return body;
   }
