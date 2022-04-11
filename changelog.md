@@ -1,3 +1,6 @@
+3.1.1
+  - fix domain client
+
 3.1.0
   - added region support
 

@@ -23,7 +23,7 @@ describe('MetaStatsClient', () => {
   });
   
   beforeEach(() => {
-    metaStatsClient = new MetaStatsClient(domainClient, token);
+    metaStatsClient = new MetaStatsClient(domainClient);
     requestStub = sandbox.stub(domainClient, 'requestMetastats');
   });
 

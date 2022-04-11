@@ -1,6 +1,7 @@
 'use strict';
 
 import HttpClient from './clients/httpClient';
+import DomainClient from './clients/domain.client';
 import MetaStatsClient from './clients/metaStats.client';
 
 /**
@@ -22,7 +23,8 @@ export default class MetaStats {
    */
   constructor(token, opts = {}) {
     const httpClient = new HttpClient(opts.requestTimeout, opts.retryOpts);
-    this._metaStatsClient = new MetaStatsClient(httpClient, token, opts.domain);
+    const domainClient = new DomainClient(httpClient, token, opts.domain);
+    this._metaStatsClient = new MetaStatsClient(domainClient);
   }
 
   /**
