@@ -7,9 +7,7 @@ export default class MetaStatsClient {
 
   /**
    * Constructs MetaStats API client instance
-   * @param {HttpClient} httpClient HTTP client
-   * @param {String} token authorization token
-   * @param {String} [domain] domain to connect to, default is agiliumtrade.agiliumtrade.ai
+   * @param {DomainClient} domainClient domain client
    */
   constructor(domainClient) {
     this._domainClient = domainClient;
@@ -311,19 +309,19 @@ export default class MetaStatsClient {
   /**
    * @typedef Trade historical trade
    * @property {String} _id historical trade id
-     @property {String} accountId MetaApi account id
-     @property {Number} volume trade volume
-     @property {Number} durationInMinutes trade duration in minutes
-     @property {Number} profit trade profit
-     @property {Number} gain trade gain
-     @property {String} success trade success
-     @property {String} openTime time the trade was opened at in broker timezone, YYYY-MM-DD HH:mm:ss.SSS format
-     @property {String} type trade type
-     @property {String} [symbol] symbol the trade relates to
-     @property {String} [closeTime] time the trade was closed at in broker timezone, YYYY-MM-DD HH:mm:ss.SSS format
-     @property {Number} [openPrice] trade opening price
-     @property {Number} [closePrice] trade closing price
-     @property {Number} [pips] the number of pips earned (positive) or lost (negative) in this trade
+   * @property {String} accountId MetaApi account id
+   * @property {Number} volume trade volume
+   * @property {Number} durationInMinutes trade duration in minutes
+   * @property {Number} profit trade profit
+   * @property {Number} gain trade gain
+   * @property {String} success trade success
+   * @property {String} openTime time the trade was opened at in broker timezone, YYYY-MM-DD HH:mm:ss.SSS format
+   * @property {String} type trade type
+   * @property {String} [symbol] symbol the trade relates to
+   * @property {String} [closeTime] time the trade was closed at in broker timezone, YYYY-MM-DD HH:mm:ss.SSS format
+   * @property {Number} [openPrice] trade opening price
+   * @property {Number} [closePrice] trade closing price
+   * @property {Number} [pips] the number of pips earned (positive) or lost (negative) in this trade
    */
 
   /**

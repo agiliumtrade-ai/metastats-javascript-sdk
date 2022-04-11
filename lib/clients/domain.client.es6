@@ -53,7 +53,7 @@ export default class DomainClient {
           throw err;
         } else {
           accountCache.regionIndex++;
-          return this.requestMetastats(getOpts, accountId);
+          return await this.requestMetastats(getOpts, accountId);
         }
       }
     }

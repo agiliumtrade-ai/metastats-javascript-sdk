@@ -1,4 +1,4 @@
-import HttpClient from "./httpClient";
+import DomainClient from "./domain.client";
 
 /**
  * metaapi.cloud MetaStats MetaTrader API client
@@ -7,11 +7,9 @@ export default class MetaStatsClient {
 
   /**
    * Constructs MetaStats API client instance
-   * @param {HttpClient} httpClient HTTP client
-   * @param {string} token authorization token
-   * @param {string} [domain] domain to connect to, default is agiliumtrade.agiliumtrade.ai
+   * @param {DomainClient} domainClient domain client
    */
-  constructor(httpClient: HttpClient, token: string, domain?: string);
+  constructor(domainClient: DomainClient);
   
   /**
    * Returns metrics of MetaApi account. This API call is billable

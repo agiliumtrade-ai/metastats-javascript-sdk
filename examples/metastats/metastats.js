@@ -15,7 +15,7 @@ const metaStats = new MetaStats(token);
 
 async function accountDeploy() {
   try {
-    let account = await api.metatraderAccountApi.getAccount(accountId);
+    account = await api.metatraderAccountApi.getAccount(accountId);
 
     // wait until account is deployed and connected to broker
     console.log('Deploying account');
