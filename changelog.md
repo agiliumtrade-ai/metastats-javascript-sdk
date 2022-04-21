@@ -1,3 +1,6 @@
+3.1.2
+  - added references to MT manager api and risk management api
+
 3.1.1
   - fix domain client
 
