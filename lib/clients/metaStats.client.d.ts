@@ -109,6 +109,16 @@ export declare type OpenTrade = {
    * the number of pips earned (positive) or lost (negative) in this trade
    */
   pips: number
+
+  /**
+   * trade risk in % of balance
+   */
+  riskInBalancePercent?: number
+
+  /**
+   * trade risk in pips
+   */
+  riskInPips?: number
 }
 
 /**
@@ -185,6 +195,16 @@ export declare type Trade = {
    * the number of pips earned (positive) or lost (negative) in this trade
    */
   pips?: number
+  
+  /**
+   * trade risk in % of balance
+   */
+  riskInBalancePercent?: number
+
+   /**
+    * trade risk in pips
+    */
+  riskInPips?: number
 }
 
 /**

@@ -322,6 +322,8 @@ export default class MetaStatsClient {
    * @property {Number} [openPrice] trade opening price
    * @property {Number} [closePrice] trade closing price
    * @property {Number} [pips] the number of pips earned (positive) or lost (negative) in this trade
+   * @property {Number} [riskInBalancePercent] trade risk in % of balance
+   * @property {Number} [riskInPips] trade risk in pips
    */
 
   /**
@@ -367,6 +369,8 @@ export default class MetaStatsClient {
      @property {String} symbol symbol the trade relates to
      @property {Number} openPrice trade opening price
      @property {Number} pips the number of pips earned (positive) or lost (negative) in this trade
+   * @property {Number} [riskInBalancePercent] trade risk in % of balance
+   * @property {Number} [riskInPips] trade risk in pips
    */
 
   /**

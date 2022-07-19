@@ -1,3 +1,7 @@
+3.2.0
+  - added riskInBalancePercent metric to trades and open trades
+  - added riskInPips metric to trades and open trades
+
 3.1.2
   - added references to MT manager api and risk management api
 
