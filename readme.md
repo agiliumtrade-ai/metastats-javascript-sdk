@@ -26,7 +26,7 @@ You pay a fee executing MetaTrader terminal on MetaApi cloud. See [https://metaa
 MetaApi provides a free tier so that you can test our APIs without any charges.
 
 ## Frequently asked questions (FAQ)
-FAQ is located here: [http://metaapi.cloud/docs/metastats/faq](http://metaapi.cloud/docs/metastats/faq)
+FAQ is located here: [http://metaapi.cloud/docs/metastats/faq/](http://metaapi.cloud/docs/metastats/faq/)
 
 ## REST API documentation
 MetaStats SDK is built on top of MetaStats REST API.
@@ -94,7 +94,7 @@ See our website for the full list of APIs and features supported [https://metaap
 Some of the APIs you might decide to use together with this module:
 
 1. MetaApi cloud forex trading API [https://metaapi.cloud/docs/client/](https://metaapi.cloud/docs/client/)
-2. CopyFactory copy trading  API [https://metaapi.cloud/docs/copyfactory/](https://metaapi.cloud/docs/copyfactory/)
+2. CopyFactory copy trading API [https://metaapi.cloud/docs/copyfactory/](https://metaapi.cloud/docs/copyfactory/)
 3. MetaTrader account management API [https://metaapi.cloud/docs/provisioning/](https://metaapi.cloud/docs/provisioning/)
 4. MetaApi MT manager API [https://metaapi.cloud/docs/manager/](https://metaapi.cloud/docs/manager/>)
 5. MetaApi risk management API [https://metaapi.cloud/docs/risk-management/](https://metaapi.cloud/docs/risk-management/>)
