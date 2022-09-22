@@ -1,3 +1,7 @@
+3.3.0
+  - fix balance metric
+  - added comment parameter to trades and open trades
+
 3.2.1
   - fix faq url
 

@@ -324,6 +324,7 @@ export default class MetaStatsClient {
    * @property {Number} [pips] the number of pips earned (positive) or lost (negative) in this trade
    * @property {Number} [riskInBalancePercent] trade risk in % of balance
    * @property {Number} [riskInPips] trade risk in pips
+   * @property {String} [comment] trade comment
    */
 
   /**
@@ -371,6 +372,7 @@ export default class MetaStatsClient {
      @property {Number} pips the number of pips earned (positive) or lost (negative) in this trade
    * @property {Number} [riskInBalancePercent] trade risk in % of balance
    * @property {Number} [riskInPips] trade risk in pips
+   * @property {String} [comment] trade comment
    */
 
   /**
