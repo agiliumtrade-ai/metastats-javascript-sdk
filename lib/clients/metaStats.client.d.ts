@@ -119,6 +119,11 @@ export declare type OpenTrade = {
    * trade risk in pips
    */
   riskInPips?: number
+
+  /**
+   * trade comment
+   */
+   comment?: string
 }
 
 /**
@@ -205,6 +210,11 @@ export declare type Trade = {
     * trade risk in pips
     */
   riskInPips?: number
+
+  /**
+   * trade comment
+   */
+  comment?: string
 }
 
 /**
