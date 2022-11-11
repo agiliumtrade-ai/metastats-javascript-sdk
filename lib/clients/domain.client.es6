@@ -50,6 +50,7 @@ export default class DomainClient {
         throw err;
       } else {
         if(accountCache.regions.length === accountCache.regionIndex + 1) {
+          accountCache.regionIndex = 0;
           throw err;
         } else {
           accountCache.regionIndex++;
