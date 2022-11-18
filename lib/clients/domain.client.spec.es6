@@ -251,6 +251,43 @@ describe('DomainClient', () => {
       });
 
       /**
+       * @test {DomainClient#requestMetastats}
+       */
+      it('should roll over to the first region if all regions failed', async () => {
+        requestStub.withArgs({
+          url: 'https://metastats-api-v1.vint-hill.agiliumtrade.ai/' +
+          'users/current/accounts/accountId/open-trades',
+          method: 'GET',
+          headers: { 'auth-token': token },
+          json: true
+        }).throws(new InternalError('test'));
+        requestStub.withArgs({
+          url: 'https://metastats-api-v1.us-west.agiliumtrade.ai/' +
+          'users/current/accounts/accountId2/open-trades',
+          method: 'GET',
+          headers: { 'auth-token': token },
+          json: true
+        }).throws(new InternalError('test'));
+ 
+        try {
+          await domainClient.requestMetastats(getOpts, 'accountId');
+          throw new Error('InternalError expected');
+        } catch (error) {
+          error.name.should.equal('InternalError');
+        }
+
+        requestStub.withArgs({
+          url: 'https://metastats-api-v1.vint-hill.agiliumtrade.ai/' +
+          'users/current/accounts/accountId/open-trades',
+          method: 'GET',
+          headers: { 'auth-token': token },
+          json: true
+        }).resolves(expected);        
+        const response = await domainClient.requestMetastats(getOpts, 'accountId');
+        sinon.assert.match(response, expected);
+      });
+
+      /**
        * @test {DomainClient#requestSignal}
        */
       it('should execute a request and update host if expired', async () => {

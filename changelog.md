@@ -1,3 +1,6 @@
+3.3.1
+  - added rolling over to the first region if requests on all regions failed
+
 3.3.0
   - fix balance metric
   - added comment parameter to trades and open trades
