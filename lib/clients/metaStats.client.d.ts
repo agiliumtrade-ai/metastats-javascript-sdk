@@ -124,6 +124,11 @@ export declare type OpenTrade = {
    * trade comment
    */
    comment?: string
+
+  /**
+   * trade market value
+   */
+   marketValue?: number
 }
 
 /**
@@ -215,6 +220,11 @@ export declare type Trade = {
    * trade comment
    */
   comment?: string
+
+  /**
+   * trade market value
+   */
+   marketValue?: number
 }
 
 /**
@@ -1208,4 +1218,9 @@ export declare type Metrics = {
    * list of information columns about the duration of trades for the diagram
    */
   tradeDurationDiagram?: Array<TradeDurationDiagramColumnMetrics>
+  
+  /**
+   * total market value of all trades on the account
+   */
+   totalTradeMarketValue?: number
 }

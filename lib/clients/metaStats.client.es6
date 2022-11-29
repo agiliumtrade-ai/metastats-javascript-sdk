@@ -280,6 +280,7 @@ export default class MetaStatsClient {
    * @property {TradeDurationMetrics} [tradeDuration] metrics for each duration of trades
    * @property {Array<TradeDurationDiagramColumnMetrics>} [tradeDurationDiagram] list of information columns about the
    * duration of trades for the diagram
+   * @property {Number} [totalTradeMarketValue] total market value of all trades on the account
    */
 
   /**
@@ -338,6 +339,7 @@ export default class MetaStatsClient {
    * If set to false, the API call is not billable. Default is true
    * @param {Number} [limit] pagination limit
    * @param {Number} [offset] pagination offset
+   * @param {Number} [marketValue ] trade market value
    * @return {Array<Trade>} account historical trades
    */
   async getAccountTrades(accountId, startTime, endTime, updateHistory = true, limit = 1000, offset = 0) {
@@ -379,6 +381,7 @@ export default class MetaStatsClient {
    * Returns open trades of MetaApi account. This API call is not billable
    * https://metaapi.cloud/docs/metastats/restApi/api/getOpenTrades/
    * @param {String} accountId MetaApi account id
+   * @param {Number} [marketValue ] trade market value
    * @return {Array<OpenTrade>} account historical trades
    */
   async getAccountOpenTrades(accountId) {

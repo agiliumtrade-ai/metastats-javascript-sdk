@@ -1,3 +1,7 @@
+3.4.0
+  - added totalTradeMarketValue metric
+  - added marketValue metric to trades and open trades
+
 3.3.1
   - added rolling over to the first region if requests on all regions failed
 
