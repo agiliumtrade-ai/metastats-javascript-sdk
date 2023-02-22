@@ -1,3 +1,6 @@
+3.4.1
+  - update package info
+
 3.4.0
   - added totalTradeMarketValue metric
   - added marketValue metric to trades and open trades
