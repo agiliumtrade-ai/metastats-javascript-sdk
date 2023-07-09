@@ -299,7 +299,7 @@ export default class MetaStatsClient {
       headers: {
         'auth-token': this._domainClient.token
       },
-      qs: {includeOpenPositions},
+      params: {includeOpenPositions},
       json: true,
     });
   
@@ -350,7 +350,7 @@ export default class MetaStatsClient {
       headers: {
         'auth-token': this._domainClient.token
       },
-      qs: {updateHistory, limit, offset},
+      params: {updateHistory, limit, offset},
       json: true,
     });
 

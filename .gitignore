@@ -10,7 +10,9 @@ package-lock.json
 .cache
 test.log
 dist/
+build/
 es/
 index.js
 test.log
 .metaapi
+.nvmrc
