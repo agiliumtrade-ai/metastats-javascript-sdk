@@ -1,9 +1,0 @@
-{
-  "name": "metastats",
-  "description": "metaapi.cloud MetaStats API example scripts",
-  "version": "1.0.0",
-  "dependencies": {
-    "metaapi.cloud-sdk": "^18.0.0"
-  },
-  "scripts": {}
-}

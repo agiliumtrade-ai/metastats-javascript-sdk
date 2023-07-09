@@ -55,7 +55,7 @@ describe('MetaStatsClient', () => {
           method: 'GET',
           headers: {'auth-token': token},
           json: true,
-          qs: {includeOpenPositions: false}
+          params: {includeOpenPositions: false}
         }
       );
       sinon.assert.match(args[1], '1234567');
@@ -74,7 +74,7 @@ describe('MetaStatsClient', () => {
           method: 'GET',
           headers: {'auth-token': token},
           json: true,
-          qs: {includeOpenPositions: true}
+          params: {includeOpenPositions: true}
         }
       );
       sinon.assert.match(args[1], '1234567');
@@ -106,7 +106,7 @@ describe('MetaStatsClient', () => {
           method: 'GET',
           headers: {'auth-token': token},
           json: true,
-          qs: {updateHistory: true, limit: 1000, offset: 0}
+          params: {updateHistory: true, limit: 1000, offset: 0}
         }
       );
       sinon.assert.match(args[1], '1234567');
