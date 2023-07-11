@@ -1,3 +1,8 @@
+3.5.1
+ - refactored file structure for backward compatibility
+ - fixed support for Node.js v13.x.x
+ - fixed build for Node.js v11.x.x.
+
 3.5.0
   - refactored build to support ESM, UMD, CJS
 
