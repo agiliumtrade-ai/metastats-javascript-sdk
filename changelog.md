@@ -1,3 +1,7 @@
+3.5.2
+ - added the request URL to the error log
+ - fixed tests for the httpClient
+
 3.5.1
  - refactored file structure for backward compatibility
  - fixed support for Node.js v13.x.x

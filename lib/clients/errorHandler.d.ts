@@ -8,8 +8,9 @@ export class ApiError extends Error {
    * @param {Function} clazz error name
    * @param {Object} message error message
    * @param {number} status HTTP status
+   * @param {string} url API request URL
    */
-  constructor(clazz: Function, message: Object, status: number);
+  constructor(clazz: Function, message: Object, status: number, url?: string);
 
   /**
    * Sets error code, used for i18n
@@ -44,8 +45,9 @@ export class NotFoundError extends ApiError {
   /**
    * Represents NotFoundError.
    * @param {string} message error message
+   * @param {string} url API request URL
    */
-  constructor(message: string);
+  constructor(message: string, url?: string);
 }
 
 /**
@@ -56,8 +58,9 @@ export class ForbiddenError extends ApiError {
   /**
    * Constructs forbidden error.
    * @param {string} message error message
+   * @param {string} url API request URL
    */
-   constructor(message: string);
+   constructor(message: string, url?: string);
 }
 
 /**
@@ -68,8 +71,9 @@ export class UnauthorizedError extends ApiError {
   /**
    * Constructs unauthorized error.
    * @param {string} message error message
+   * @param {string} url API request URL
    */
-   constructor(message: string);
+   constructor(message: string, url?: string);
 }
 
 /**
@@ -81,8 +85,9 @@ export class ValidationError extends ApiError {
    * Constructs validation error.
    * @param {string} message error message
    * @param {Object} details error data
+   * @param {string} url API request URL
    */
-  constructor(message: string, details: Object);
+  constructor(message: string, details: Object, url?: string);
 }
 
 /**
@@ -93,8 +98,9 @@ export class InternalError extends ApiError {
   /**
    * Constructs unexpected error.
    * @param {string} message error message
+   * @param {string} url API request URL
    */
-  constructor(message: string);
+  constructor(message: string, url?: string);
 }
 
 /**
@@ -103,22 +109,22 @@ export class InternalError extends ApiError {
 export type TooManyRequestsErrorMetadata = {
 
   /**
-   * periodInMinutes throttling period in minutes
+   * throttling period in minutes
    */
   periodInMinutes: number,
 
   /**
-   *requestsPerPeriodAllowed available requests for periodInMinutes
+   * available requests for periodInMinutes
    */
   requestsPerPeriodAllowed: number,
 
   /**
-   * recommendedRetryTime recommended date to retry request
+   * recommended date to retry request
    */
   recommendedRetryTime: Date,
 
   /**
-   * type error type
+   * error type
    */
   type: string
 }
@@ -132,6 +138,7 @@ export class TooManyRequestsError extends ApiError {
    * Constructs too many requests error.
    * @param {string} message error message
    * @param {TooManyRequestsErrorMetadata} metadata error metadata
+   * @param {string} url API request URL
    */
-  constructor(message: string, metadata: TooManyRequestsErrorMetadata);
+  constructor(message: string, metadata: TooManyRequestsErrorMetadata, url?: string);
 }
