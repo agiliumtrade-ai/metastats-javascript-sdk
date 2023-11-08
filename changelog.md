@@ -1,3 +1,6 @@
+3.5.3
+ - fix docs and package.json
+
 3.5.2
  - added the request URL to the error log
  - fixed tests for the httpClient
