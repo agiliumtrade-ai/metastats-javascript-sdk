@@ -34,7 +34,8 @@ const swcESM = require('./swc/swcrc.esm');
 const webESM = {
   mode: 'production',
   entry: './lib/index.es6',
-  
+  devtool: 'source-map',
+
   target: 'web',
 
   module: {
@@ -74,6 +75,7 @@ const webUMD = {
   entry: './lib/index.es6',
   target: 'web',
   mode: 'production',
+  devtool: 'source-map',
   
   module: {
     rules: [
@@ -111,6 +113,7 @@ const nodeCJS = {
   entry: './lib/index.es6',
   target: 'node',
   mode: 'production',
+  devtool: 'source-map',
 
   module: {
     rules: [
