@@ -1,14 +1,17 @@
+3.5.4
+  - fix docs and package.json
+
 3.5.3
- - fix docs and package.json
+  - fix docs and package.json
 
 3.5.2
- - added the request URL to the error log
- - fixed tests for the httpClient
+  - added the request URL to the error log
+  - fixed tests for the httpClient
 
 3.5.1
- - refactored file structure for backward compatibility
- - fixed support for Node.js v13.x.x
- - fixed build for Node.js v11.x.x.
+  - refactored file structure for backward compatibility
+  - fixed support for Node.js v13.x.x
+  - fixed build for Node.js v11.x.x.
 
 3.5.0
   - refactored build to support ESM, UMD, CJS
