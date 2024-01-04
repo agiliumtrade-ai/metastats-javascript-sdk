@@ -381,7 +381,7 @@ export default class MetaStatsClient {
    * Returns open trades of MetaApi account. This API call is not billable
    * https://metaapi.cloud/docs/metastats/restApi/api/getOpenTrades/
    * @param {String} accountId MetaApi account id
-   * @param {Number} [marketValue ] trade market value
+   * @param {Number} [marketValue] trade market value
    * @return {Array<OpenTrade>} account historical trades
    */
   async getAccountOpenTrades(accountId) {
