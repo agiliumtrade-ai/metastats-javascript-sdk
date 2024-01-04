@@ -36,7 +36,7 @@ MetaStats REST API docs are available at [https://metaapi.cloud/docs/metastats/]
 ## Code examples
 We published some code examples in our github repository, namely:
 
-- Javascript: [https://github.com/metaapi/metaapi-javascript-sdk/tree/master/examples/node/metastats](https://github.com/metaapi/metaapi-javascript-sdk/tree/master/examples/node/metastats)
+- Javascript: [https://github.com/metaapi/metaapi-javascript-sdk/tree/master/examples/node/meta-stats](https://github.com/metaapi/metaapi-javascript-sdk/tree/master/examples/node/meta-stats)
 
 ## Installation
 ```bash

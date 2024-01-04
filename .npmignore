@@ -10,4 +10,7 @@ package-lock.json
 .env
 .metaapi
 test.log
+#lib
+swc
+development.md
 .gitlab-ci.yml

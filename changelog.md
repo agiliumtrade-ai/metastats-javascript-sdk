@@ -1,3 +1,6 @@
+3.5.5
+  - fix docs
+
 3.5.4
   - fix docs and package.json
 
