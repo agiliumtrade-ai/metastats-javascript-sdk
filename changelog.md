@@ -1,3 +1,6 @@
+3.5.6
+  - fix TS declarations
+
 3.5.5
   - fix docs
 
