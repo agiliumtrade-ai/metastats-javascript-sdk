@@ -8,10 +8,15 @@
 7. Verify examples are in working condition
 8. Create git tag and push it to master
 9. Copy examples to public repository
+   rm -rf ../metaapi-metastats-javascript-sdk-examples/docs &&
+   if [ -d docs ]; then cp -r docs ../metaapi-metastats-javascript-sdk-examples; fi &&
    rm -rf ../metaapi-metastats-javascript-sdk-examples/examples &&
-   cp -r examples ../metaapi-metastats-javascript-sdk-examples &&
-   cp .gitignore ../metaapi-metastats-javascript-sdk-examples &&
-   cp .npmignore ../metaapi-metastats-javascript-sdk-examples &&
-   cp LICENSE ../metaapi-metastats-javascript-sdk-examples &&
-   cp readme.md ../metaapi-metastats-javascript-sdk-examples
+   if [ -d examples ]; then cp -r examples ../metaapi-metastats-javascript-sdk-examples; fi &&
+   if [ -f .gitignore ]; then cp .gitignore ../metaapi-metastats-javascript-sdk-examples; fi &&
+   if [ -f .npmignore ]; then cp .npmignore ../metaapi-metastats-javascript-sdk-examples; fi &&
+   if [ -f MANIFEST.in ]; then cp MANIFEST.in ../metaapi-metastats-javascript-sdk-examples; fi &&
+   if [ -f LICENSE ]; then cp LICENSE ../metaapi-metastats-javascript-sdk-examples; fi &&
+   if [ -f readme.md ]; then cp readme.md ../metaapi-metastats-javascript-sdk-examples; fi &&
+   if [ -f README.rst ]; then cp README.rst ../metaapi-metastats-javascript-sdk-examples; fi &&
+   if [ -f changelog.md ]; then cp changelog.md ../metaapi-metastats-javascript-sdk-examples; fi
 10. Tag examples repository and push to main
