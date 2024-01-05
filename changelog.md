@@ -1,3 +1,6 @@
+4.0.0
+  - increment version for synchronization with Python SDK version
+
 3.5.6
   - fix TS declarations
 
