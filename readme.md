@@ -36,7 +36,7 @@ MetaStats REST API docs are available at [https://metaapi.cloud/docs/metastats/]
 ## Code examples
 We published some code examples in our github repository, namely:
 
-- Javascript: [https://github.com/metaapi/metaapi-javascript-sdk/tree/master/examples/node/meta-stats](https://github.com/metaapi/metaapi-javascript-sdk/tree/master/examples/node/meta-stats)
+- Javascript: [https://github.com/metaapi/metaapi-javascript-sdk/tree/master/examples/node/metastats](https://github.com/metaapi/metaapi-javascript-sdk/tree/master/examples/node/metastats)
 
 ## Installation
 ```bash
@@ -50,7 +50,7 @@ npm install --save metaapi.cloud-sdk
 
 ## Installing SDK in browser HTML applications
 ```html
-<script src="unpkg.com/metaapi.cloud-sdk/index.js"></script>
+<script src="unpkg.com/metaapi.cloud-sdk"></script>
 <script>
     const token = '...';
     const metaStats = new MetaStats(token);
@@ -76,13 +76,13 @@ let accountId = '...'; // MetaApi account id
 console.log(await metaStats.getMetrics(accountId));
 
 // retrieve MetaApi MetaTrader account statistics including open positions
-console.log(await metaStats.getMetrics(accountId, true);
+console.log(await metaStats.getMetrics(accountId, true));
 
 // retrieve MetaApi MetaTrader account trades
-console.log(await metaStats.getAccountTrades(accountId, '2020-01-01 00:00:00.000', '2021-01-01 00:00:00.000');
+console.log(await metaStats.getAccountTrades(accountId, '2020-01-01 00:00:00.000', '2021-01-01 00:00:00.000'));
 
 // retrieve MetaApi MetaTrader account open trades
-console.log(await metaStats.getAccountOpenTrades(accountId);
+console.log(await metaStats.getAccountOpenTrades(accountId));
 ```
 
 ## Quotas and rate limits
@@ -96,5 +96,5 @@ Some of the APIs you might decide to use together with this module:
 1. MetaApi cloud forex trading API [https://metaapi.cloud/docs/client/](https://metaapi.cloud/docs/client/)
 2. CopyFactory copy trading API [https://metaapi.cloud/docs/copyfactory/](https://metaapi.cloud/docs/copyfactory/)
 3. MetaTrader account management API [https://metaapi.cloud/docs/provisioning/](https://metaapi.cloud/docs/provisioning/)
-4. MetaApi MT manager API [https://metaapi.cloud/docs/manager/](https://metaapi.cloud/docs/manager/>)
-5. MetaApi risk management API [https://metaapi.cloud/docs/risk-management/](https://metaapi.cloud/docs/risk-management/>)
+4. MetaApi MT manager API [https://metaapi.cloud/docs/manager/](https://metaapi.cloud/docs/manager/)
+5. MetaApi risk management API [https://metaapi.cloud/docs/risk-management/](https://metaapi.cloud/docs/risk-management/)
